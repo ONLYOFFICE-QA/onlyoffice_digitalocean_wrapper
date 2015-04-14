@@ -15,7 +15,7 @@ class DigitalOceanWrapper
   end
 
   def get_image_id_by_name(image_name)
-    responce = Digitalocean::Image.all(filter: "my_images")
+    responce = Digitalocean::Image.all(filter: 'my_images')
     image = responce.images.find { |x| x['name'] == image_name }
     image['id']
   end
@@ -64,7 +64,7 @@ class DigitalOceanWrapper
   def restore_image_by_name(image_name = 'nct-at1', droplet_name = image_name)
     id = get_image_id_by_name(image_name)
     create_result = Digitalocean::Droplet.create(name: droplet_name, size_id: 62, image_id: id, region_id: 4)
-    fail "Problem, while creating '#{droplet_name}' from image ''#{image_name}' \nError: #{create_result.error_message}" if create_result.status == "ERROR"
+    fail "Problem, while creating '#{droplet_name}' from image '#{image_name}' \nError: #{create_result.error_message}" if create_result.status == 'ERROR'
   end
 
   def destroy_droplet_by_name(droplet_name = 'nct-at1')
