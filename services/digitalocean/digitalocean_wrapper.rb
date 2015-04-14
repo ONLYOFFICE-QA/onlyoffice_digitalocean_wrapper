@@ -54,7 +54,7 @@ class DigitalOceanWrapper
   def wait_until_droplet_have_status(droplet_name, status = 'active')
     timeout = 300
     counter = 0
-    while get_droplet_status_by_name(droplet_name)!= status && counter < timeout
+    while get_droplet_status_by_name(droplet_name) != status && counter < timeout
       counter += 1
       sleep 1
     end
