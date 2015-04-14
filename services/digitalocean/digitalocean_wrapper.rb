@@ -16,7 +16,7 @@ class DigitalOceanWrapper
 
   def get_image_id_by_name(image_name)
     responce = Digitalocean::Image.all(filter: "my_images")
-    image = responce.images.find {|x| x['name'] == image_name}
+    image = responce.images.find { |x| x['name'] == image_name }
     image['id']
   end
 
@@ -27,7 +27,7 @@ class DigitalOceanWrapper
       LoggerHelper.print_to_log("get_droplet_by_name(#{droplet_name}) exception happened: #{e}")
       nil
     end
-    droplet = responce.droplets.find {|x| x['name'] == droplet_name}
+    droplet = responce.droplets.find { |x| x['name'] == droplet_name }
     if droplet.nil?
       nil
     else
@@ -37,13 +37,13 @@ class DigitalOceanWrapper
 
   def get_droplet_ip_by_name(droplet_name)
     responce = Digitalocean::Droplet.all
-    droplet = responce.droplets.find {|x| x['name'] == droplet_name}
+    droplet = responce.droplets.find { |x| x['name'] == droplet_name }
     droplet['ip_address']
   end
 
   def get_droplet_status_by_name(droplet_name)
     responce = Digitalocean::Droplet.all
-    droplet = responce.droplets.find {|x| x['name'] == droplet_name}
+    droplet = responce.droplets.find { |x| x['name'] == droplet_name }
     if droplet.nil?
       nil
     else
