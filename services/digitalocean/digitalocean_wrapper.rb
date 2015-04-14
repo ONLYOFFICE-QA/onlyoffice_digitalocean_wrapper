@@ -7,7 +7,7 @@ class DigitalOceanWrapper
         client_id = File.read(Dir.home + '/.do/client_id.key').gsub("\n", '')
         api_key = File.read(Dir.home + '/.do/api.key').gsub("\n", '')
       rescue
-        fail "No keys found in #{Dir.home}/.do/ directory. Please create files #{Dir.home}/.ec2/client_id.key and #{Dir.home}/.ec2/api.key"
+        raise "No keys found in #{Dir.home}/.do/ directory. Please create files #{Dir.home}/.ec2/client_id.key and #{Dir.home}/.ec2/api.key"
       end
     end
     Digitalocean.client_id = client_id.gsub("\n", '')
