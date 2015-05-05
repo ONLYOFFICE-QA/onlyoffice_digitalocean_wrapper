@@ -25,12 +25,7 @@ class DigitalOceanWrapper
   end
 
   def get_droplet_by_name(droplet_name)
-    begin
-      droplets = @client.droplets.all
-    rescue StandardError? => e
-      LoggerHelper.print_to_log("get_droplet_by_name(#{droplet_name}) exception happened: #{e}")
-      nil
-    end
+    droplets = @client.droplets.all
     droplet = droplets.find { |x| x.name == droplet_name }
     if droplet.nil?
       LoggerHelper.print_to_log("get_image_id_by_name(#{droplet_name}): not found any droplets")
