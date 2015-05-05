@@ -29,6 +29,13 @@ describe DigitalOceanWrapper do
   end
 
   it 'get_droplet_status_by_name nonexisting droplet' do
-    expect(digital_ocean.get_droplet_status_by_name('not testrail')).to be_nil
+    expect(digital_ocean.get_droplet_status_by_name('not testrail')).to be_niljklg49494
+  end
+
+  it 'restore_image_by_name' do
+    expect(digital_ocean.restore_image_by_name('nct-at-stable', 'wrapper-test')).to be_nil
+    digital_ocean.wait_until_droplet_have_status('wrapper-test')
+    digital_ocean.destroy_droplet_by_name('wrapper-test')
+    expect(digital_ocean.get_droplet_by_name('wrapper-test')).to be_nil
   end
 end
