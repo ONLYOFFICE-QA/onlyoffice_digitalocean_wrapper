@@ -14,9 +14,9 @@ class DigitalOceanWrapper
   end
 
   def get_image_id_by_name(image_name)
-    responce = Digitalocean::Image.all(filter: 'my_images')
-    image = responce.images.find { |x| x['name'] == image_name }
-    image['id']
+    all_droplets = @client.images.all
+    image = all_droplets.find { |x| x.name == image_name }
+    image.id
   end
 
   def get_droplet_by_name(droplet_name)
