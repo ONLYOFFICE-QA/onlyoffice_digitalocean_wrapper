@@ -60,15 +60,16 @@ class DigitalOceanWrapper
     get_droplet_status_by_name(droplet_name)
   end
 
-  def restore_image_by_name(image_name = 'nct-at1', droplet_name = image_name)
-    id = get_image_id_by_name(image_name)
-    create_result = Digitalocean::Droplet.create(name: droplet_name, size_id: 62, image_id: id, region_id: 4)
-    fail "Problem, while creating '#{droplet_name}' from image '#{image_name}' \nError: #{create_result.error_message}" if create_result.status == 'ERROR'
+  def restore_image_by_name(image_name = 'nct-at-stable', droplet_name = image_name)
+    image_id = get_image_id_by_name(image_name)
+    droplet = DropletKit::Droplet.new(name: droplet_name, region: 'nyc2', image: image_id.to_i, size: '2gb')
+    created = @client.droplets.create(droplet)
+    fail "Problem, while creating '#{droplet_name}' from image '#{image_name}' \nError: #{create_result.error_message}" if created.status == 'ERROR'
   end
 
   def destroy_droplet_by_name(droplet_name = 'nct-at1')
     droplet_id = get_droplet_by_name(droplet_name)
-    Digitalocean::Droplet.destroy(droplet_id)
+    client.droplets.delete(id: droplet_id)
     wait_until_droplet_have_status(droplet_name, nil)
   end
 end
