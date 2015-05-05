@@ -41,12 +41,12 @@ class DigitalOceanWrapper
   end
 
   def get_droplet_status_by_name(droplet_name)
-    responce = Digitalocean::Droplet.all
-    droplet = responce.droplets.find { |x| x['name'] == droplet_name }
+    droplets = @client.droplets.all
+    droplet = droplets.find { |x| x.name == droplet_name }
     if droplet.nil?
       nil
     else
-      droplet['status']
+      droplet.status
     end
   end
 
