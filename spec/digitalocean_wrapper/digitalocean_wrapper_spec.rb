@@ -29,7 +29,7 @@ describe DigitalOceanWrapper do
   end
 
   it 'get_droplet_status_by_name nonexisting droplet' do
-    expect(digital_ocean.get_droplet_status_by_name('not testrail')).to be_niljklg49494
+    expect(digital_ocean.get_droplet_status_by_name('not testrail')).to be_nil
   end
 
   it 'restore_image_by_name' do
