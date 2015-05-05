@@ -52,8 +52,10 @@ class DigitalOceanWrapper
       LoggerHelper.print_to_log("get_droplet_status_by_name(#{droplet_name}): not found any droplets")
       nil
     else
-      LoggerHelper.print_to_log("get_droplet_status_by_name(#{droplet_name}): #{droplet.status}")
-      droplet.status
+      status = droplet.status
+      status = :locked if droplet.locked
+      LoggerHelper.print_to_log("get_droplet_status_by_name(#{droplet_name}): #{status}")
+      status
     end
   end
 
