@@ -1,17 +1,16 @@
-require 'digitalocean'
+require 'droplet_kit'
 require_relative '../../helpers/logger_helper'
 class DigitalOceanWrapper
-  def initialize(client_id = nil, api_key = nil)
-    if client_id.nil? || api_key.nil?
+  attr_accessor :client
+  def initialize(access_token = nil)
+    if access_token.nil?
       begin
-        client_id = File.read(Dir.home + '/.do/client_id.key').gsub("\n", '')
-        api_key = File.read(Dir.home + '/.do/api.key').gsub("\n", '')
+        access_token = File.read(Dir.home + '/.do/access_tokens').gsub("\n", '')
       rescue
-        raise "No keys found in #{Dir.home}/.do/ directory. Please create files #{Dir.home}/.ec2/client_id.key and #{Dir.home}/.ec2/api.key"
+        raise "No access token found in #{Dir.home}/.do/ directory. Please create files #{Dir.home}/.do/access_token"
       end
     end
-    Digitalocean.client_id = client_id.gsub("\n", '')
-    Digitalocean.api_key = api_key.gsub("\n", '')
+    @client = DropletKit::Client.new(access_token: access_token)
   end
 
   def get_image_id_by_name(image_name)
