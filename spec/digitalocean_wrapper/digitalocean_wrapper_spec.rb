@@ -11,4 +11,14 @@ describe DigitalOceanWrapper do
     digital_ocean = DigitalOceanWrapper.new
     expect(digital_ocean.get_image_id_by_name('nct-at-stable')).to be_a(Fixnum)
   end
+
+  it 'get_droplet_by_name with existing name' do
+    digital_ocean = DigitalOceanWrapper.new
+    expect(digital_ocean.get_droplet_by_name('testrail')).to be_a(Fixnum)
+  end
+
+  it 'get_droplet_by_name with non-existing name' do
+    digital_ocean = DigitalOceanWrapper.new
+    expect(digital_ocean.get_droplet_by_name('not testrail')).to be_nil
+  end
 end
