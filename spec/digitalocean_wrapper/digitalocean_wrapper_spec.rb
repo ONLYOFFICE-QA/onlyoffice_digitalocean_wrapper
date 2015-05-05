@@ -33,7 +33,7 @@ describe DigitalOceanWrapper do
   end
 
   it 'restore_image_by_name' do
-    expect(digital_ocean.restore_image_by_name('nct-at-stable', 'wrapper-test')).to be_nil
+    digital_ocean.restore_image_by_name('nct-at-stable', 'wrapper-test')
     digital_ocean.wait_until_droplet_have_status('wrapper-test')
     digital_ocean.destroy_droplet_by_name('wrapper-test')
     expect(digital_ocean.get_droplet_by_name('wrapper-test')).to be_nil
