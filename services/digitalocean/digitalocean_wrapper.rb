@@ -1,13 +1,17 @@
 require 'droplet_kit'
 require_relative '../../helpers/logger_helper'
+
+# Class for wrapping DigitalOcean API gem
 class DigitalOceanWrapper
   attr_accessor :client
+
   def initialize(access_token = nil)
     if access_token.nil?
       begin
         access_token = File.read(Dir.home + '/.do/access_token').gsub("\n", '')
-      rescue
-        raise "No access token found in #{Dir.home}/.do/ directory. Please create files #{Dir.home}/.do/access_token"
+      rescue Errno::ENOENT
+        raise Errno::ENOENT, "No access token found in #{Dir.home}/.do/ directory." \
+        "Please create files #{Dir.home}/.do/access_token"
       end
     end
     @client = DropletKit::Client.new(access_token: access_token)
@@ -23,7 +27,7 @@ class DigitalOceanWrapper
   def get_droplet_by_name(droplet_name)
     begin
       droplets = @client.droplets.all
-    rescue Exception => e
+    rescue StandardError? => e
       LoggerHelper.print_to_log("get_droplet_by_name(#{droplet_name}) exception happened: #{e}")
       nil
     end
@@ -75,7 +79,8 @@ class DigitalOceanWrapper
     droplet = DropletKit::Droplet.new(name: droplet_name, region: 'nyc2', image: image_id.to_i, size: '2gb')
     created = @client.droplets.create(droplet)
     LoggerHelper.print_to_log("restore_image_by_name(#{image_name}, #{droplet_name})")
-    fail "Problem, while creating '#{droplet_name}' from image '#{image_name}' \nError: #{create_result.error_message}" if created.status == 'ERROR'
+    fail "Problem, while creating '#{droplet_name}' from image '#{image_name}'\n" \
+    "Error: #{created.error_message}" if created.status == 'ERROR'
   end
 
   def destroy_droplet_by_name(droplet_name = 'nct-at1')
