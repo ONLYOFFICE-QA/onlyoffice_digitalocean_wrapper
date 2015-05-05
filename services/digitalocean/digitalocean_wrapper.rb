@@ -21,16 +21,16 @@ class DigitalOceanWrapper
 
   def get_droplet_by_name(droplet_name)
     begin
-      responce = Digitalocean::Droplet.all
+      droplets = @client.droplets.all
     rescue Exception => e
       LoggerHelper.print_to_log("get_droplet_by_name(#{droplet_name}) exception happened: #{e}")
       nil
     end
-    droplet = responce.droplets.find { |x| x['name'] == droplet_name }
+    droplet = droplets.find { |x| x.name == droplet_name }
     if droplet.nil?
       nil
     else
-      droplet['id']
+      droplet.id
     end
   end
 
