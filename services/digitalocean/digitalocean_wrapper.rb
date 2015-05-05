@@ -5,7 +5,7 @@ class DigitalOceanWrapper
   def initialize(access_token = nil)
     if access_token.nil?
       begin
-        access_token = File.read(Dir.home + '/.do/access_tokens').gsub("\n", '')
+        access_token = File.read(Dir.home + '/.do/access_token').gsub("\n", '')
       rescue
         raise "No access token found in #{Dir.home}/.do/ directory. Please create files #{Dir.home}/.do/access_token"
       end
