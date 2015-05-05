@@ -21,4 +21,9 @@ describe DigitalOceanWrapper do
     digital_ocean = DigitalOceanWrapper.new
     expect(digital_ocean.get_droplet_by_name('not testrail')).to be_nil
   end
+
+  it 'get_droplet_ip_by_name' do
+    digital_ocean = DigitalOceanWrapper.new
+    expect(digital_ocean.get_droplet_ip_by_name('testrail')).to eq('107.170.125.157')
+  end
 end
