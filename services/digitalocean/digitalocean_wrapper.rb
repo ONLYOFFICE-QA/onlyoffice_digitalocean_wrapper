@@ -35,9 +35,9 @@ class DigitalOceanWrapper
   end
 
   def get_droplet_ip_by_name(droplet_name)
-    responce = Digitalocean::Droplet.all
-    droplet = responce.droplets.find { |x| x['name'] == droplet_name }
-    droplet['ip_address']
+    droplets = @client.droplets.all
+    droplet = droplets.find { |x| x.name == droplet_name }
+    droplet.networks.first.first.ip_address
   end
 
   def get_droplet_status_by_name(droplet_name)
