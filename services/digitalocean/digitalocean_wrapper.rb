@@ -69,14 +69,14 @@ class DigitalOceanWrapper
     get_droplet_status_by_name(droplet_name)
   end
 
-  def get_kernels_to_droplet(droplet_name)
+  def kernels_of_droplet(droplet_name)
     droplet_id = get_droplet_by_name(droplet_name)
     client.droplets.kernels(id: droplet_id)
   end
 
   def change_kernel(droplet_name, kernel_name)
     droplet_id = get_droplet_by_name(droplet_name)
-    kernel_id = get_kernels_to_droplet(kernel_name)
+    kernel_id = kernels_of_droplet(kernel_name)
     client.droplet_actions.change_kernel(droplet_id: droplet_id, kernel: kernel_id)
   end
 
