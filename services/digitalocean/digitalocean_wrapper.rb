@@ -28,7 +28,7 @@ class DigitalOceanWrapper
     droplets = @client.droplets.all
     droplet = droplets.find { |x| x.name == droplet_name }
     if droplet.nil?
-      LoggerHelper.print_to_log("get_image_id_by_name(#{droplet_name}): not found any droplets")
+      LoggerHelper.print_to_log("get_droplet_by_name(#{droplet_name}): not found any droplets")
       nil
     else
       LoggerHelper.print_to_log("get_droplet_by_name(#{droplet_name}): #{droplet.id}")
@@ -67,6 +67,17 @@ class DigitalOceanWrapper
       LoggerHelper.print_to_log("waiting for droplet (#{droplet_name}) to have status: #{status} for #{counter} seconds of #{timeout}")
     end
     get_droplet_status_by_name(droplet_name)
+  end
+
+  def get_kernels_to_droplet(droplet_name)
+    droplet_id = get_droplet_by_name(droplet_name)
+    client.droplets.kernels(id: droplet_id)
+  end
+
+  def change_kernel(droplet_name, kernel_name)
+    droplet_id = get_droplet_by_name(droplet_name)
+    kernel_id = get_kernels_to_droplet(kernel_name)
+    client.droplet_actions.change_kernel(droplet_id: droplet_id, kernel: kernel_id)
   end
 
   def restore_image_by_name(image_name = 'nct-at-stable', droplet_name = image_name)
