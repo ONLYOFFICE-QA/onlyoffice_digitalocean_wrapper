@@ -38,4 +38,8 @@ describe DigitalOceanWrapper do
     digital_ocean.destroy_droplet_by_name('wrapper-test')
     expect(digital_ocean.get_droplet_by_name('wrapper-test')).to be_nil
   end
+
+  it 'kernels_of_droplet' do
+    expect(digital_ocean.kernels_of_droplet('testrail').first).to be_a(DropletKit::Kernel)
+  end
 end
