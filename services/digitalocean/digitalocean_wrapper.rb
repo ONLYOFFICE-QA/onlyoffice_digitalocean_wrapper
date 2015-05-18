@@ -44,6 +44,14 @@ class DigitalOceanWrapper
     ip
   end
 
+  def get_droplet_kernel_by_name(droplet_name)
+    droplets = @client.droplets.all
+    droplet = droplets.find { |x| x.name == droplet_name }
+    kernel_name = droplet.kernel.name
+    LoggerHelper.print_to_log("get_droplet_kernel_by_name(#{droplet_name}): #{kernel_name}")
+    kernel_name
+  end
+
   def get_droplet_status_by_name(droplet_name)
     droplets = @client.droplets.all
     droplet = droplets.find { |x| x.name == droplet_name }
@@ -71,12 +79,15 @@ class DigitalOceanWrapper
 
   def kernels_of_droplet(droplet_name)
     droplet_id = get_droplet_by_name(droplet_name)
-    client.droplets.kernels(id: droplet_id).to_a
+    kernels = client.droplets.kernels(id: droplet_id).to_a
+    LoggerHelper.print_to_log("Got kernels_of_droplet(#{droplet_name})")
+    kernels
   end
 
   def change_kernel(droplet_name, kernel_name)
     droplet_id = get_droplet_by_name(droplet_name)
-    kernel_id = kernels_of_droplet(kernel_name)
+    all_kernels = kernels_of_droplet(droplet_id)
+    needed_kernel_id = all_kernels.select{ |cur_kernel| cur_kernel.name == kernel_name}
     client.droplet_actions.change_kernel(droplet_id: droplet_id, kernel: kernel_id)
   end
 
