@@ -1,7 +1,7 @@
 require 'rspec'
 require_relative '../../testing_shared'
 
-describe DigitalOceanWrapper do
+describe DigitalOceanWrapper, retry: 1 do
   let (:digital_ocean) { DigitalOceanWrapper.new }
 
   it 'check for correct load access token from file' do
