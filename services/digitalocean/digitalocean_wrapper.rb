@@ -97,7 +97,7 @@ class DigitalOceanWrapper
     created = @client.droplets.create(droplet)
     LoggerHelper.print_to_log("restore_image_by_name(#{image_name}, #{droplet_name})")
     fail "Problem, while creating '#{droplet_name}' from image '#{image_name}'\n" \
-    "Error: #{created.to_s}" if created.status.is_a?(String)
+    "Error: #{created.to_s}" if created.is_a?(String)
   end
 
   def destroy_droplet_by_name(droplet_name = 'nct-at1')
