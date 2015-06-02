@@ -56,4 +56,31 @@ describe DigitalOceanWrapper, retry: 1 do
     digital_ocean.destroy_droplet_by_name('wrapper-test')
     expect(digital_ocean.get_droplet_by_name('wrapper-test')).to be_nil
   end
+
+  it 'power_off_droplet' do
+    digital_ocean.restore_image_by_name('nct-at-stable', 'wrapper-test')
+    digital_ocean.wait_until_droplet_have_status('wrapper-test')
+    digital_ocean.power_off_droplet('wrapper-test')
+    expect(digital_ocean.get_droplet_status_by_name('wrapper-test')).to eq('off')
+    digital_ocean.destroy_droplet_by_name('wrapper-test')
+    expect(digital_ocean.get_droplet_by_name('wrapper-test')).to be_nil
+  end
+
+  it 'power_on_droplet' do
+    digital_ocean.restore_image_by_name('nct-at-stable', 'wrapper-test')
+    digital_ocean.wait_until_droplet_have_status('wrapper-test')
+    digital_ocean.power_on_droplet('wrapper-test')
+    expect(digital_ocean.get_droplet_status_by_name('wrapper-test')).to eq('active')
+    digital_ocean.destroy_droplet_by_name('wrapper-test')
+    expect(digital_ocean.get_droplet_by_name('wrapper-test')).to be_nil
+  end
+
+  it 'reboot_droplet' do
+    digital_ocean.restore_image_by_name('nct-at-stable', 'wrapper-test')
+    digital_ocean.wait_until_droplet_have_status('wrapper-test')
+    digital_ocean.reboot_droplet('wrapper-test')
+    expect(digital_ocean.get_droplet_status_by_name('wrapper-test')).to eq('active')
+    digital_ocean.destroy_droplet_by_name('wrapper-test')
+    expect(digital_ocean.get_droplet_by_name('wrapper-test')).to be_nil
+  end
 end

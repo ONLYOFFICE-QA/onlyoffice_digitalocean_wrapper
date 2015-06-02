@@ -116,6 +116,7 @@ class DigitalOceanWrapper
   def reboot_droplet(droplet_name)
     droplet_id = get_droplet_by_name(droplet_name)
     client.droplet_actions.reboot(droplet_id: droplet_id)
+    wait_until_droplet_have_status(droplet_name)
   end
 
   def destroy_droplet_by_name(droplet_name = 'nct-at1')
