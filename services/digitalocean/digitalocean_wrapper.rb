@@ -91,13 +91,31 @@ class DigitalOceanWrapper
     client.droplet_actions.change_kernel(droplet_id: droplet_id, kernel: needed_kernel_id)
   end
 
-  def restore_image_by_name(image_name = 'nct-at-stable', droplet_name = image_name)
+  def restore_image_by_name(image_name = 'nct-at-stable', droplet_name = image_name, region = 'nyc2', size = '2gb')
     image_id = get_image_id_by_name(image_name)
-    droplet = DropletKit::Droplet.new(name: droplet_name, region: 'nyc2', image: image_id.to_i, size: '2gb')
+    droplet = DropletKit::Droplet.new(name: droplet_name, region: region, image: image_id.to_i, size: size)
     created = @client.droplets.create(droplet)
     LoggerHelper.print_to_log("restore_image_by_name(#{image_name}, #{droplet_name})")
     fail "Problem, while creating '#{droplet_name}' from image '#{image_name}'\n" \
     "Error: #{created.to_s}" if created.is_a?(String)
+    created
+  end
+
+  def power_off_droplet(droplet_name)
+    droplet_id = get_droplet_by_name(droplet_name)
+    client.droplet_actions.power_off(droplet_id: droplet_id)
+    wait_until_droplet_have_status(droplet_name, 'off')
+  end
+
+  def power_on_droplet(droplet_name)
+    droplet_id = get_droplet_by_name(droplet_name)
+    client.droplet_actions.power_on(droplet_id: droplet_id)
+    wait_until_droplet_have_status(droplet_name)
+  end
+
+  def reboot_droplet(droplet_name)
+    droplet_id = get_droplet_by_name(droplet_name)
+    client.droplet_actions.reboot(droplet_id: droplet_id)
   end
 
   def destroy_droplet_by_name(droplet_name = 'nct-at1')
