@@ -1,5 +1,7 @@
 require 'droplet_kit'
 require_relative '../../helpers/logger_helper'
+require_relative 'digitalocean_images'
+require_relative 'digitalocean_kernels'
 
 # Class for wrapping DigitalOcean API gem
 class DigitalOceanWrapper

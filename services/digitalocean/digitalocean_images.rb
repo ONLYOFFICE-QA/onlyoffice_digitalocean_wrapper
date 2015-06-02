@@ -1,5 +1,4 @@
 class DigitalOceanImages
-
   class << self
 
     def ubuntu_14_04_x64_cs
@@ -23,5 +22,4 @@ class DigitalOceanImages
     end
 
   end
-
 end
