@@ -1,6 +1,5 @@
 class DigitalOceanImages
   class << self
-
     def ubuntu_14_04_x64_cs
       'Ubuntu1404AllKernel+CS'
     end
@@ -20,6 +19,5 @@ class DigitalOceanImages
     def debian_7_cs
       'Debian7AllKernels+CS'
     end
-
   end
 end

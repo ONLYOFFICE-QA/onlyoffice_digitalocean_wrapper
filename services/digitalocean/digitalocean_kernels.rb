@@ -1,6 +1,5 @@
 class DigitalOceanKernels
   class << self
-
     def ubuntu_14_04_x64
       ['Ubuntu 14.04 x64 vmlinuz-3.13.0-24-generic', 'Ubuntu 14.04 x64 vmlinuz-3.13.0-27-generic', 'Ubuntu 14.04 x64 vmlinuz-3.13.0-29-generic',
        'Ubuntu 14.04 x64 vmlinuz-3.13.0-30-generic', 'Ubuntu 14.04 x64 vmlinuz-3.13.0-32-generic', 'Ubuntu 14.04 x64 vmlinuz-3.13.0-33-generic',
@@ -37,6 +36,5 @@ class DigitalOceanKernels
        'Debian 7.0 x64 vmlinuz-3.2.0-4-amd64 (3.2.65-1+deb7u1)', 'Debian 7.0 x64 vmlinuz-3.2.0-4-amd64 (3.2.65-1+deb7u2)',
        'Debian 7.0 x64 vmlinuz-3.2.0-4-amd64 (3.2.68-1+deb7u1)']
     end
-
   end
 end

@@ -89,7 +89,7 @@ class DigitalOceanWrapper
   def change_kernel(droplet_name, kernel_name)
     droplet_id = get_droplet_by_name(droplet_name)
     all_kernels = kernels_of_droplet(droplet_name)
-    needed_kernel_id = all_kernels.select{ |cur_kernel| cur_kernel.name == kernel_name}.first.id
+    needed_kernel_id = all_kernels.find { |cur_kernel| cur_kernel.name == kernel_name }.id
     client.droplet_actions.change_kernel(droplet_id: droplet_id, kernel: needed_kernel_id)
   end
 
@@ -99,7 +99,7 @@ class DigitalOceanWrapper
     created = @client.droplets.create(droplet)
     LoggerHelper.print_to_log("restore_image_by_name(#{image_name}, #{droplet_name})")
     fail "Problem, while creating '#{droplet_name}' from image '#{image_name}'\n" \
-    "Error: #{created.to_s}" if created.is_a?(String)
+    "Error: #{created}" if created.is_a?(String)
     created
   end
 
