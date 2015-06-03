@@ -91,6 +91,7 @@ class DigitalOceanWrapper
     all_kernels = kernels_of_droplet(droplet_name)
     needed_kernel_id = all_kernels.find { |cur_kernel| cur_kernel.name == kernel_name }.id
     client.droplet_actions.change_kernel(droplet_id: droplet_id, kernel: needed_kernel_id)
+    wait_until_droplet_have_status(droplet_name)
   end
 
   def restore_image_by_name(image_name = 'nct-at-stable', droplet_name = image_name, region = 'nyc2', size = '2gb')
