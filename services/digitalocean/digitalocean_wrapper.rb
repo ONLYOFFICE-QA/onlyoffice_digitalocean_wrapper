@@ -17,6 +17,7 @@ class DigitalOceanWrapper
       end
     end
     @client = DropletKit::Client.new(access_token: access_token)
+    fail ArgumentError, 'DigitalOceanWrapper: Your Access Token is Incorrect' unless correct_access_token?
   end
 
   # Check if access token is correct
