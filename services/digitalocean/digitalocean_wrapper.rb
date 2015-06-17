@@ -17,6 +17,18 @@ class DigitalOceanWrapper
       end
     end
     @client = DropletKit::Client.new(access_token: access_token)
+    fail ArgumentError, 'DigitalOceanWrapper: Your Access Token is Incorrect' unless correct_access_token?
+  end
+
+  # Check if access token is correct
+  # @return [true, false] result of check
+  def correct_access_token?
+    begin
+      @client.droplets.all.first
+    rescue TypeError
+      return false
+    end
+    true
   end
 
   def get_image_id_by_name(image_name)

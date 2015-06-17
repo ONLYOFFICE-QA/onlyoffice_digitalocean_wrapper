@@ -4,6 +4,10 @@ require_relative '../../testing_shared'
 describe DigitalOceanWrapper, retry: 1 do
   digital_ocean = DigitalOceanWrapper.new
 
+  it 'check for incorrect access token - throwing exception' do
+    expect{DigitalOceanWrapper.new('incorrect_key')}.to raise_error(ArgumentError)
+  end
+
   it 'check for correct load access token from file' do
     expect(digital_ocean.client.access_token).not_to be_empty
   end
