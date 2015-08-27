@@ -10,7 +10,7 @@ class DigitalOceanWrapper
   def initialize(access_token = nil)
     if access_token.nil?
       begin
-        access_token = File.read(Dir.home + '/.do/access_token').gsub("\n", '')
+        access_token = File.read(Dir.home + '/.do/access_token').delete("\n")
       rescue Errno::ENOENT
         raise Errno::ENOENT, "No access token found in #{Dir.home}/.do/ directory." \
         "Please create files #{Dir.home}/.do/access_token"
