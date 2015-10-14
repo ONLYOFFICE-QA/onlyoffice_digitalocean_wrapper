@@ -53,6 +53,10 @@ class DigitalOceanWrapper
   def get_droplet_ip_by_name(droplet_name)
     droplets = @client.droplets.all
     droplet = droplets.find { |x| x.name == droplet_name }
+    if droplet.nil?
+      LoggerHelper.print_to_log("There is no created droplet with name: #{droplet_name}")
+      return
+    end
     ip = droplet.networks.first.first.ip_address
     LoggerHelper.print_to_log("get_droplet_ip_by_name(#{droplet_name}): #{ip}")
     ip

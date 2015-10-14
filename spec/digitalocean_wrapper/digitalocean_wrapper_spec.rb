@@ -3,6 +3,7 @@ require_relative '../../testing_shared'
 
 describe DigitalOceanWrapper, retry: 1 do
   digital_ocean = DigitalOceanWrapper.new
+  existing_image_name = 'nct-at'
 
   it 'check for incorrect access token - throwing exception' do
     expect { DigitalOceanWrapper.new('incorrect_key') }.to raise_error(ArgumentError)
@@ -13,7 +14,7 @@ describe DigitalOceanWrapper, retry: 1 do
   end
 
   it 'get_image_id_by_name' do
-    expect(digital_ocean.get_image_id_by_name('nct-at-stable')).to be_a(Fixnum)
+    expect(digital_ocean.get_image_id_by_name(existing_image_name)).to be_a(Fixnum)
   end
 
   it 'get_droplet_by_name with existing name' do
@@ -28,6 +29,10 @@ describe DigitalOceanWrapper, retry: 1 do
     expect(digital_ocean.get_droplet_ip_by_name('testrail')).to eq('107.170.125.157')
   end
 
+  it 'get_droplet_ip_by_name non existing name' do
+    expect(digital_ocean.get_droplet_ip_by_name('not-exists')).to be_nil
+  end
+
   it 'get_droplet_status_by_name running droplet' do
     expect(digital_ocean.get_droplet_status_by_name('testrail')).to eq('active')
   end
@@ -37,7 +42,7 @@ describe DigitalOceanWrapper, retry: 1 do
   end
 
   it 'restore_image_by_name' do
-    digital_ocean.restore_image_by_name('nct-at-stable', 'wrapper-test')
+    digital_ocean.restore_image_by_name(existing_image_name, 'wrapper-test')
     digital_ocean.wait_until_droplet_have_status('wrapper-test')
     digital_ocean.destroy_droplet_by_name('wrapper-test')
     expect(digital_ocean.get_droplet_by_name('wrapper-test')).to be_nil
@@ -53,7 +58,7 @@ describe DigitalOceanWrapper, retry: 1 do
 
   context 'Operation' do
     before :all do
-      digital_ocean.restore_image_by_name('nct-at-stable', 'wrapper-test')
+      digital_ocean.restore_image_by_name(existing_image_name, 'wrapper-test')
       digital_ocean.wait_until_droplet_have_status('wrapper-test')
     end
 
