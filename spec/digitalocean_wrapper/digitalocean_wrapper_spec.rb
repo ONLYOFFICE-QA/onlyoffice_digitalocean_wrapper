@@ -28,6 +28,10 @@ describe DigitalOceanWrapper, retry: 1 do
     expect(digital_ocean.get_droplet_ip_by_name('testrail')).to eq('107.170.125.157')
   end
 
+  it 'get_droplet_ip_by_name non existing name' do
+    expect(digital_ocean.get_droplet_ip_by_name('not-exists')).to be_nil
+  end
+
   it 'get_droplet_status_by_name running droplet' do
     expect(digital_ocean.get_droplet_status_by_name('testrail')).to eq('active')
   end
