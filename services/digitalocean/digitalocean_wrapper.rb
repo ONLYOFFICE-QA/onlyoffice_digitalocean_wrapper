@@ -38,6 +38,14 @@ class DigitalOceanWrapper
     image.id
   end
 
+  # Get droplet by its name
+  # @param [String] droplet_name
+  # @return [DropletKit::Droplet] droplet
+  def droplet_by_name(droplet_name)
+    droplets = @client.droplets.all
+    droplets.find { |x| x.name == droplet_name }
+  end
+
   def get_droplet_id_by_name(droplet_name)
     droplets = @client.droplets.all
     droplet = droplets.find { |x| x.name == droplet_name }
