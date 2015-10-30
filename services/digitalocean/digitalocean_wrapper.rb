@@ -47,8 +47,7 @@ class DigitalOceanWrapper
   end
 
   def get_droplet_id_by_name(droplet_name)
-    droplets = @client.droplets.all
-    droplet = droplets.find { |x| x.name == droplet_name }
+    droplet = droplet_by_name(droplet_name)
     if droplet.nil?
       LoggerHelper.print_to_log("get_droplet_id_by_name(#{droplet_name}): not found any droplets")
       nil
@@ -59,8 +58,7 @@ class DigitalOceanWrapper
   end
 
   def get_droplet_ip_by_name(droplet_name)
-    droplets = @client.droplets.all
-    droplet = droplets.find { |x| x.name == droplet_name }
+    droplet = droplet_by_name(droplet_name)
     if droplet.nil?
       LoggerHelper.print_to_log("There is no created droplet with name: #{droplet_name}")
       return
@@ -71,16 +69,14 @@ class DigitalOceanWrapper
   end
 
   def current_kernel(droplet_name)
-    droplets = @client.droplets.all
-    droplet = droplets.find { |x| x.name == droplet_name }
+    droplet = droplet_by_name(droplet_name)
     kernel_name = droplet.kernel.name
     LoggerHelper.print_to_log("get_droplet_kernel_by_name(#{droplet_name}): #{kernel_name}")
     kernel_name
   end
 
   def get_droplet_status_by_name(droplet_name)
-    droplets = @client.droplets.all
-    droplet = droplets.find { |x| x.name == droplet_name }
+    droplet = droplet_by_name(droplet_name)
     if droplet.nil?
       LoggerHelper.print_to_log("get_droplet_status_by_name(#{droplet_name}): not found any droplets")
       nil
