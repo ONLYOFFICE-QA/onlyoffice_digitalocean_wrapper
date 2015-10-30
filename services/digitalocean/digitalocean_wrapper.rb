@@ -37,6 +37,7 @@ class DigitalOceanWrapper
   end
 
   def get_image_id_by_name(image_name)
+    assure_correct_token
     all_droplets = @client.images.all
     image = all_droplets.find { |x| x.name == image_name }
     LoggerHelper.print_to_log("get_image_id_by_name(#{image_name}): #{image.id}")
@@ -47,6 +48,7 @@ class DigitalOceanWrapper
   # @param [String] droplet_name
   # @return [DropletKit::Droplet] droplet
   def droplet_by_name(droplet_name)
+    assure_correct_token
     droplets = @client.droplets.all
     droplets.find { |x| x.name == droplet_name }
   end
