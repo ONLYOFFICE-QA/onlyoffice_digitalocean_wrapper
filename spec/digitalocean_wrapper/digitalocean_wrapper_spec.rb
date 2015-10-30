@@ -17,6 +17,16 @@ describe DigitalOceanWrapper, retry: 1 do
     expect(digital_ocean.get_image_id_by_name(existing_image_name)).to be_a(Fixnum)
   end
 
+  describe 'DigitalOceanWrapper#droplet_by_name' do
+    it 'get_droplet_by_name with existing name' do
+      expect(digital_ocean.droplet_by_name('testrail')).to be_a(DropletKit::Droplet)
+    end
+
+    it 'get_droplet_by_name with non-existing name' do
+      expect(digital_ocean.droplet_by_name('not testrail')).to be_nil
+    end
+  end
+
   it 'get_droplet_id_by_name with existing name' do
     expect(digital_ocean.get_droplet_id_by_name('testrail')).to be_a(Fixnum)
   end
