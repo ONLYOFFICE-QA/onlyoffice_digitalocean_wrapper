@@ -31,6 +31,11 @@ class DigitalOceanWrapper
     true
   end
 
+  # Just check that you can reach DO API
+  def assure_correct_token
+    fail ArgumentError, 'Access token for DigitalOcean API is incorect' unless correct_access_token?
+  end
+
   def get_image_id_by_name(image_name)
     all_droplets = @client.images.all
     image = all_droplets.find { |x| x.name == image_name }
