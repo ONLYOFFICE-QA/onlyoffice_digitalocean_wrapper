@@ -17,12 +17,12 @@ describe DigitalOceanWrapper, retry: 1 do
     expect(digital_ocean.get_image_id_by_name(existing_image_name)).to be_a(Fixnum)
   end
 
-  it 'get_droplet_by_name with existing name' do
-    expect(digital_ocean.get_droplet_by_name('testrail')).to be_a(Fixnum)
+  it 'get_droplet_id_by_name with existing name' do
+    expect(digital_ocean.get_droplet_id_by_name('testrail')).to be_a(Fixnum)
   end
 
-  it 'get_droplet_by_name with non-existing name' do
-    expect(digital_ocean.get_droplet_by_name('not testrail')).to be_nil
+  it 'get_droplet_id_by_name with non-existing name' do
+    expect(digital_ocean.get_droplet_id_by_name('not testrail')).to be_nil
   end
 
   it 'get_droplet_ip_by_name' do
@@ -45,7 +45,7 @@ describe DigitalOceanWrapper, retry: 1 do
     digital_ocean.restore_image_by_name(existing_image_name, 'wrapper-test')
     digital_ocean.wait_until_droplet_have_status('wrapper-test')
     digital_ocean.destroy_droplet_by_name('wrapper-test')
-    expect(digital_ocean.get_droplet_by_name('wrapper-test')).to be_nil
+    expect(digital_ocean.get_droplet_id_by_name('wrapper-test')).to be_nil
   end
 
   it 'kernels_of_droplet' do
@@ -85,11 +85,11 @@ describe DigitalOceanWrapper, retry: 1 do
 
     it 'destroy_droplet_by_name' do
       digital_ocean.destroy_droplet_by_name('wrapper-test')
-      expect(digital_ocean.get_droplet_by_name('wrapper-test')).to be_nil
+      expect(digital_ocean.get_droplet_id_by_name('wrapper-test')).to be_nil
     end
 
     after :all do
-      digital_ocean.destroy_droplet_by_name('wrapper-test') if digital_ocean.get_droplet_by_name('wrapper-test')
+      digital_ocean.destroy_droplet_by_name('wrapper-test') if digital_ocean.get_droplet_id_by_name('wrapper-test')
     end
   end
 end

@@ -38,14 +38,14 @@ class DigitalOceanWrapper
     image.id
   end
 
-  def get_droplet_by_name(droplet_name)
+  def get_droplet_id_by_name(droplet_name)
     droplets = @client.droplets.all
     droplet = droplets.find { |x| x.name == droplet_name }
     if droplet.nil?
-      LoggerHelper.print_to_log("get_droplet_by_name(#{droplet_name}): not found any droplets")
+      LoggerHelper.print_to_log("get_droplet_id_by_name(#{droplet_name}): not found any droplets")
       nil
     else
-      LoggerHelper.print_to_log("get_droplet_by_name(#{droplet_name}): #{droplet.id}")
+      LoggerHelper.print_to_log("get_droplet_id_by_name(#{droplet_name}): #{droplet.id}")
       droplet.id
     end
   end
@@ -96,14 +96,14 @@ class DigitalOceanWrapper
   end
 
   def kernels_of_droplet(droplet_name)
-    droplet_id = get_droplet_by_name(droplet_name)
+    droplet_id = get_droplet_id_by_name(droplet_name)
     kernels = client.droplets.kernels(id: droplet_id).to_a
     LoggerHelper.print_to_log("Got kernels_of_droplet(#{droplet_name})")
     kernels
   end
 
   def change_kernel(droplet_name, kernel_name)
-    droplet_id = get_droplet_by_name(droplet_name)
+    droplet_id = get_droplet_id_by_name(droplet_name)
     all_kernels = kernels_of_droplet(droplet_name)
     needed_kernel_id = all_kernels.find { |cur_kernel| cur_kernel.name == kernel_name }.id
     client.droplet_actions.change_kernel(droplet_id: droplet_id, kernel: needed_kernel_id)
@@ -121,25 +121,25 @@ class DigitalOceanWrapper
   end
 
   def power_off_droplet(droplet_name)
-    droplet_id = get_droplet_by_name(droplet_name)
+    droplet_id = get_droplet_id_by_name(droplet_name)
     client.droplet_actions.power_off(droplet_id: droplet_id)
     wait_until_droplet_have_status(droplet_name, 'off')
   end
 
   def power_on_droplet(droplet_name)
-    droplet_id = get_droplet_by_name(droplet_name)
+    droplet_id = get_droplet_id_by_name(droplet_name)
     client.droplet_actions.power_on(droplet_id: droplet_id)
     wait_until_droplet_have_status(droplet_name)
   end
 
   def reboot_droplet(droplet_name)
-    droplet_id = get_droplet_by_name(droplet_name)
+    droplet_id = get_droplet_id_by_name(droplet_name)
     client.droplet_actions.reboot(droplet_id: droplet_id)
     wait_until_droplet_have_status(droplet_name)
   end
 
   def destroy_droplet_by_name(droplet_name = 'nct-at1')
-    droplet_id = get_droplet_by_name(droplet_name)
+    droplet_id = get_droplet_id_by_name(droplet_name)
     client.droplets.delete(id: droplet_id)
     LoggerHelper.print_to_log("destroy_droplet_by_name(#{droplet_name})")
     wait_until_droplet_have_status(droplet_name, nil)
