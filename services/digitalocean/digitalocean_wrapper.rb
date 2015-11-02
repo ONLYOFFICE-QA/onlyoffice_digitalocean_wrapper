@@ -24,9 +24,13 @@ class DigitalOceanWrapper
     true
   end
 
-  # Just check that you can reach DO API
+  # Check if token is correct. If not trying to read new token
+  # If reading failed - fail
   def assure_correct_token
-    fail ArgumentError, 'Access token for DigitalOcean API is incorect' unless correct_access_token?
+    return if correct_access_token?
+    @client = DropletKit::Client.new(access_token: DigitalOceanWrapper.read_token)
+    return if correct_access_token?
+    fail ArgumentError, 'Access token for DigitalOcean API is incorect'
   end
 
   def get_image_id_by_name(image_name)
