@@ -8,14 +8,7 @@ class DigitalOceanWrapper
   attr_accessor :client
 
   def initialize(access_token = nil)
-    if access_token.nil?
-      begin
-        access_token = File.read(Dir.home + '/.do/access_token').delete("\n")
-      rescue Errno::ENOENT
-        raise Errno::ENOENT, "No access token found in #{Dir.home}/.do/ directory." \
-        "Please create files #{Dir.home}/.do/access_token"
-      end
-    end
+    access_token ||= DigitalOceanWrapper.read_token
     @client = DropletKit::Client.new(access_token: access_token)
     fail ArgumentError, 'DigitalOceanWrapper: Your Access Token is Incorrect' unless correct_access_token?
   end
@@ -31,9 +24,13 @@ class DigitalOceanWrapper
     true
   end
 
-  # Just check that you can reach DO API
+  # Check if token is correct. If not trying to read new token
+  # If reading failed - fail
   def assure_correct_token
-    fail ArgumentError, 'Access token for DigitalOcean API is incorect' unless correct_access_token?
+    return if correct_access_token?
+    @client = DropletKit::Client.new(access_token: DigitalOceanWrapper.read_token)
+    return if correct_access_token?
+    fail ArgumentError, 'Access token for DigitalOcean API is incorect'
   end
 
   def get_image_id_by_name(image_name)
@@ -154,5 +151,14 @@ class DigitalOceanWrapper
     client.droplets.delete(id: droplet_id)
     LoggerHelper.print_to_log("destroy_droplet_by_name(#{droplet_name})")
     wait_until_droplet_have_status(droplet_name, nil)
+  end
+
+  # Read access token from file system
+  # @return [String] token
+  def self.read_token
+    File.read(Dir.home + '/.do/access_token').delete("\n")
+  rescue Errno::ENOENT
+    raise Errno::ENOENT, "No access token found in #{Dir.home}/.do/ directory." \
+      "Please create files #{Dir.home}/.do/access_token"
   end
 end
