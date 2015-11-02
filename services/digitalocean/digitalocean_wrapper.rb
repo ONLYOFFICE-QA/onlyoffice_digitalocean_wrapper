@@ -8,7 +8,7 @@ class DigitalOceanWrapper
   attr_accessor :client
 
   def initialize(access_token = nil)
-    access_token = DigitalOceanWrapper.read_token if access_token.nil?
+    access_token ||= DigitalOceanWrapper.read_token
     @client = DropletKit::Client.new(access_token: access_token)
     fail ArgumentError, 'DigitalOceanWrapper: Your Access Token is Incorrect' unless correct_access_token?
   end
