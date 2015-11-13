@@ -1,8 +1,8 @@
 require 'rspec'
 require_relative '../../testing_shared'
 
-describe DigitalOceanWrapper, retry: 1 do
-  digital_ocean = DigitalOceanWrapper.new
+describe DigitalOceanWrapper, retry: 1, use_private_key: true do
+  let(:digital_ocean) { DigitalOceanWrapper.new }
   existing_image_name = 'nct-at'
 
   it 'check for incorrect access token - throwing exception' do
