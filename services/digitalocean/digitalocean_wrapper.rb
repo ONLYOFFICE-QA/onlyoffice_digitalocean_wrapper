@@ -10,7 +10,7 @@ class DigitalOceanWrapper
   def initialize(access_token = nil)
     access_token ||= DigitalOceanWrapper.read_token
     @client = DropletKit::Client.new(access_token: access_token)
-    fail ArgumentError, 'DigitalOceanWrapper: Your Access Token is Incorrect' unless correct_access_token?
+    raise ArgumentError, 'DigitalOceanWrapper: Your Access Token is Incorrect' unless correct_access_token?
   end
 
   # Check if access token is correct
@@ -30,7 +30,7 @@ class DigitalOceanWrapper
     return if correct_access_token?
     @client = DropletKit::Client.new(access_token: DigitalOceanWrapper.read_token)
     return if correct_access_token?
-    fail ArgumentError, 'Access token for DigitalOcean API is incorect'
+    raise ArgumentError, 'Access token for DigitalOcean API is incorect'
   end
 
   def get_image_id_by_name(image_name)
@@ -123,7 +123,7 @@ class DigitalOceanWrapper
     droplet = DropletKit::Droplet.new(name: droplet_name, region: region, image: image_id.to_i, size: size)
     created = @client.droplets.create(droplet)
     LoggerHelper.print_to_log("restore_image_by_name(#{image_name}, #{droplet_name})")
-    fail "Problem, while creating '#{droplet_name}' from image '#{image_name}'\n" \
+    raise "Problem, while creating '#{droplet_name}' from image '#{image_name}'\n" \
     "Error: #{created}" if created.is_a?(String)
     created
   end
