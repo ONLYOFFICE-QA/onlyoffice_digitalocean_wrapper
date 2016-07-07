@@ -18,7 +18,7 @@ class DigitalOceanWrapper
   def correct_access_token?
     begin
       @client.droplets.all.first
-    rescue TypeError
+    rescue DropletKit::Error
       return false
     end
     true
