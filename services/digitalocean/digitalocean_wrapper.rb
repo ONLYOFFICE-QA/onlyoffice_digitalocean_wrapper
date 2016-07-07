@@ -18,7 +18,7 @@ class DigitalOceanWrapper
   def correct_access_token?
     begin
       @client.droplets.all.first
-    rescue TypeError
+    rescue DropletKit::Error
       return false
     end
     true
@@ -96,8 +96,8 @@ class DigitalOceanWrapper
     timeout = 300
     counter = 0
     while get_droplet_status_by_name(droplet_name) != status && counter < timeout
-      counter += 1
-      sleep 1
+      counter += 10
+      sleep 10
       LoggerHelper.print_to_log("waiting for droplet (#{droplet_name}) to have status: #{status} for #{counter} seconds of #{timeout}")
     end
     get_droplet_status_by_name(droplet_name)
