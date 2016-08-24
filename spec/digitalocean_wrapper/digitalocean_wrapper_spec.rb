@@ -2,7 +2,7 @@ require 'rspec'
 require_relative '../../testing_shared'
 
 digital_ocean = nil
-existing_image_name = 'wrapper-test-image'
+existing_image_name = 'nct-at-docker'
 
 describe DigitalOceanWrapper, retry: 1, use_private_key: true do
   before :all do
@@ -77,6 +77,7 @@ describe DigitalOceanWrapper, retry: 1, use_private_key: true do
     end
 
     it 'change_kernel' do
+      pending('Kernel changing is not working in current images. It is obsolute')
       expect(digital_ocean.current_kernel('wrapper-test')).not_to eq('Ubuntu 14.04 x64 vmlinuz-3.13.0-52-generic')
       digital_ocean.change_kernel('wrapper-test', 'Ubuntu 14.04 x64 vmlinuz-3.13.0-52-generic')
       expect(digital_ocean.current_kernel('wrapper-test')).to eq('Ubuntu 14.04 x64 vmlinuz-3.13.0-52-generic')
