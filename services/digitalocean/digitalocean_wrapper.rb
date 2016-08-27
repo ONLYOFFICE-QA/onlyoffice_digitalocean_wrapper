@@ -1,5 +1,6 @@
 require 'droplet_kit'
 require_relative '../../helpers/logger_helper'
+require_relative 'digitalocean_wrapper/digitalocean_exceptions'
 require_relative 'digitalocean_images'
 require_relative 'digitalocean_kernels'
 
@@ -37,6 +38,7 @@ class DigitalOceanWrapper
     assure_correct_token
     all_droplets = @client.images.all
     image = all_droplets.find { |x| x.name == image_name }
+    raise DigitalOceanImageNotFound, image_name if image.nil?
     LoggerHelper.print_to_log("get_image_id_by_name(#{image_name}): #{image.id}")
     image.id
   end

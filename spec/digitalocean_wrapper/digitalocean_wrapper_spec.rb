@@ -3,6 +3,7 @@ require_relative '../../testing_shared'
 
 digital_ocean = nil
 existing_image_name = 'nct-at-docker'
+non_existing_image_name = 'incorrect-image-name'
 
 describe DigitalOceanWrapper, retry: 1, use_private_key: true do
   before :all do
@@ -17,8 +18,15 @@ describe DigitalOceanWrapper, retry: 1, use_private_key: true do
     expect(digital_ocean.client.access_token).not_to be_empty
   end
 
-  it 'get_image_id_by_name' do
-    expect(digital_ocean.get_image_id_by_name(existing_image_name)).to be_a(Fixnum)
+  describe 'get_image_id_by_name' do
+    it 'get_image_id_by_name' do
+      expect(digital_ocean.get_image_id_by_name(existing_image_name)).to be_a(Fixnum)
+    end
+
+    it 'get_image_id_by_name for nonexisting image' do
+      expect { digital_ocean.get_image_id_by_name(non_existing_image_name) }
+        .to raise_error(DigitalOceanImageNotFound, non_existing_image_name)
+    end
   end
 
   describe 'DigitalOceanWrapper#droplet_by_name' do
