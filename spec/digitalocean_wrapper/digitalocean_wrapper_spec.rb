@@ -20,7 +20,7 @@ describe DigitalOceanWrapper, retry: 1, use_private_key: true do
 
   describe 'get_image_id_by_name' do
     it 'get_image_id_by_name' do
-      expect(digital_ocean.get_image_id_by_name(existing_image_name)).to be_a(Fixnum)
+      expect(digital_ocean.get_image_id_by_name(existing_image_name)).to be_a(Integer)
     end
 
     it 'get_image_id_by_name for nonexisting image' do
@@ -40,7 +40,7 @@ describe DigitalOceanWrapper, retry: 1, use_private_key: true do
   end
 
   it 'get_droplet_id_by_name with existing name' do
-    expect(digital_ocean.get_droplet_id_by_name('testrail')).to be_a(Fixnum)
+    expect(digital_ocean.get_droplet_id_by_name('testrail')).to be_a(Integer)
   end
 
   it 'get_droplet_id_by_name with non-existing name' do
