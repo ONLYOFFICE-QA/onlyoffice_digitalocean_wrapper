@@ -1,5 +1,2 @@
-require 'onlyoffice_digitalocean_wrapper/version'
-
-module OnlyofficeDigitaloceanWrapper
-  # Your code goes here...
-end
+require_relative 'onlyoffice_digitalocean_wrapper/digitalocean_wrapper'
+require_relative 'onlyoffice_digitalocean_wrapper/version'
