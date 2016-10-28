@@ -1,4 +1,4 @@
-module OnlyofficeTestrailWrapper
+module OnlyofficeDigitaloceanWrapper
   class LoggerHelper
     def self.print_to_log(string, color_code = nil)
       message = Time.now.strftime('%T/%d.%m.%y') + '    ' + '[' + caller[0].to_s[/\w+.rb/].chomp('.rb') + '] ' + string

@@ -1,17 +1,16 @@
-require 'rspec'
-require_relative '../../testing_shared'
+require 'spec_helper'
 
 digital_ocean = nil
 existing_image_name = 'nct-at-docker'
 non_existing_image_name = 'incorrect-image-name'
 
-describe DigitalOceanWrapper, retry: 1, use_private_key: true do
+describe OnlyofficeDigitaloceanWrapper::DigitalOceanWrapper, retry: 1, use_private_key: true do
   before :all do
-    digital_ocean = DigitalOceanWrapper.new
+    digital_ocean = OnlyofficeDigitaloceanWrapper::DigitalOceanWrapper.new
   end
 
   it 'check for incorrect access token - throwing exception' do
-    expect { DigitalOceanWrapper.new('incorrect_key') }.to raise_error(ArgumentError)
+    expect { OnlyofficeDigitaloceanWrapper::DigitalOceanWrapper.new('incorrect_key') }.to raise_error(ArgumentError)
   end
 
   it 'check for correct load access token from file' do
@@ -25,7 +24,7 @@ describe DigitalOceanWrapper, retry: 1, use_private_key: true do
 
     it 'get_image_id_by_name for nonexisting image' do
       expect { digital_ocean.get_image_id_by_name(non_existing_image_name) }
-        .to raise_error(DigitalOceanImageNotFound, non_existing_image_name)
+        .to raise_error(OnlyofficeDigitaloceanWrapper::DigitalOceanImageNotFound, non_existing_image_name)
     end
   end
 
