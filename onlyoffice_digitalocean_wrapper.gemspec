@@ -16,6 +16,7 @@ Gem::Specification.new do |spec|
   spec.files = `git ls-files lib LICENSE.txt README.md`.split($RS)
   spec.require_paths = ['lib']
 
+  spec.add_runtime_dependency('activesupport', '~> 4')
   spec.add_runtime_dependency('droplet_kit', '~> 1')
   spec.license = 'AGPL-3.0'
 end
