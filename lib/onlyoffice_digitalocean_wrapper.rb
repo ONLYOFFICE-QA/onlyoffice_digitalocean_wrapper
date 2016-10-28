@@ -1,0 +1,2 @@
+require_relative 'onlyoffice_digitalocean_wrapper/digitalocean_wrapper'
+require_relative 'onlyoffice_digitalocean_wrapper/version'
