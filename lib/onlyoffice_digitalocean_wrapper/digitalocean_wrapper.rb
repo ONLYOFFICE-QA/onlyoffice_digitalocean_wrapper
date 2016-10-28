@@ -159,6 +159,7 @@ module OnlyofficeDigitaloceanWrapper
     # Read access token from file system
     # @return [String] token
     def self.read_token
+      return ENV['DO_ACCESS_TOKEN'] if ENV[' ']
       File.read(Dir.home + '/.do/access_token').delete("\n")
     rescue Errno::ENOENT
       raise Errno::ENOENT, "No access token found in #{Dir.home}/.do/ directory." \
