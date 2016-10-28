@@ -10,13 +10,12 @@ Gem::Specification.new do |spec|
   spec.email         = ['shockwavenn@gmail.com', 'nazarov90@gmail.com']
 
   spec.summary       = 'Wrapper gem for DigitalOcean'
-  spec.description   = 'Wrapper gem for DigitalOcean'
+  spec.description   = 'Wrapper gem for DigitalOcean. Use in testing projects'
   spec.homepage      = 'https://github.com/onlyoffice-testing-robot/onlyoffice_digitalocean_wrapper'
 
   spec.files = `git ls-files lib LICENSE.txt README.md`.split($RS)
   spec.require_paths = ['lib']
 
-  spec.add_development_dependency 'bundler', '~> 1.13'
-  spec.add_development_dependency 'rake', '~> 10.0'
-  spec.add_development_dependency 'rspec', '~> 3.0'
+  spec.add_runtime_dependency('droplet_kit', '~> 1')
+  spec.license = 'AGPL-3.0'
 end
