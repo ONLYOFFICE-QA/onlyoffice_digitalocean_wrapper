@@ -1,7 +1,5 @@
 require 'droplet_kit'
-require_relative 'digitalocean_wrapper/digitalocean_wrapper/digitalocean_exceptions'
-require_relative 'digitalocean_wrapper/digitalocean_images'
-require_relative 'digitalocean_wrapper/digitalocean_kernels'
+require_relative 'digitalocean_wrapper/digitalocean_exceptions'
 require_relative 'helpers/logger_helper'
 
 module OnlyofficeDigitaloceanWrapper
