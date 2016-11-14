@@ -1,6 +1,6 @@
 require 'droplet_kit'
+require 'onlyoffice_logger_helper'
 require_relative 'digitalocean_wrapper/digitalocean_exceptions'
-require_relative 'helpers/logger_helper'
 
 module OnlyofficeDigitaloceanWrapper
 # Class for wrapping DigitalOcean API gem
@@ -38,7 +38,7 @@ module OnlyofficeDigitaloceanWrapper
       all_droplets = @client.images.all
       image = all_droplets.find { |x| x.name == image_name }
       raise DigitalOceanImageNotFound, image_name if image.nil?
-      LoggerHelper.print_to_log("get_image_id_by_name(#{image_name}): #{image.id}")
+      OnlyofficeLoggerHelper.log("get_image_id_by_name(#{image_name}): #{image.id}")
       image.id
     end
 
@@ -54,10 +54,10 @@ module OnlyofficeDigitaloceanWrapper
     def get_droplet_id_by_name(droplet_name)
       droplet = droplet_by_name(droplet_name)
       if droplet.nil?
-        LoggerHelper.print_to_log("get_droplet_id_by_name(#{droplet_name}): not found any droplets")
+        OnlyofficeLoggerHelper.log("get_droplet_id_by_name(#{droplet_name}): not found any droplets")
         nil
       else
-        LoggerHelper.print_to_log("get_droplet_id_by_name(#{droplet_name}): #{droplet.id}")
+        OnlyofficeLoggerHelper.log("get_droplet_id_by_name(#{droplet_name}): #{droplet.id}")
         droplet.id
       end
     end
@@ -65,30 +65,30 @@ module OnlyofficeDigitaloceanWrapper
     def get_droplet_ip_by_name(droplet_name)
       droplet = droplet_by_name(droplet_name)
       if droplet.nil?
-        LoggerHelper.print_to_log("There is no created droplet with name: #{droplet_name}")
+        OnlyofficeLoggerHelper.log("There is no created droplet with name: #{droplet_name}")
         return
       end
       ip = droplet.networks.first.first.ip_address
-      LoggerHelper.print_to_log("get_droplet_ip_by_name(#{droplet_name}): #{ip}")
+      OnlyofficeLoggerHelper.log("get_droplet_ip_by_name(#{droplet_name}): #{ip}")
       ip
     end
 
     def current_kernel(droplet_name)
       droplet = droplet_by_name(droplet_name)
       kernel_name = droplet.kernel.name
-      LoggerHelper.print_to_log("get_droplet_kernel_by_name(#{droplet_name}): #{kernel_name}")
+      OnlyofficeLoggerHelper.log("get_droplet_kernel_by_name(#{droplet_name}): #{kernel_name}")
       kernel_name
     end
 
     def get_droplet_status_by_name(droplet_name)
       droplet = droplet_by_name(droplet_name)
       if droplet.nil?
-        LoggerHelper.print_to_log("get_droplet_status_by_name(#{droplet_name}): not found any droplets")
+        OnlyofficeLoggerHelper.log("get_droplet_status_by_name(#{droplet_name}): not found any droplets")
         nil
       else
         status = droplet.status
         status = :locked if droplet.locked
-        LoggerHelper.print_to_log("get_droplet_status_by_name(#{droplet_name}): #{status}")
+        OnlyofficeLoggerHelper.log("get_droplet_status_by_name(#{droplet_name}): #{status}")
         status
       end
     end
@@ -99,7 +99,7 @@ module OnlyofficeDigitaloceanWrapper
       while get_droplet_status_by_name(droplet_name) != status && counter < timeout
         counter += 10
         sleep 10
-        LoggerHelper.print_to_log("waiting for droplet (#{droplet_name}) to have status: #{status} for #{counter} seconds of #{timeout}")
+        OnlyofficeLoggerHelper.log("waiting for droplet (#{droplet_name}) to have status: #{status} for #{counter} seconds of #{timeout}")
       end
       get_droplet_status_by_name(droplet_name)
     end
@@ -107,7 +107,7 @@ module OnlyofficeDigitaloceanWrapper
     def kernels_of_droplet(droplet_name)
       droplet_id = get_droplet_id_by_name(droplet_name)
       kernels = client.droplets.kernels(id: droplet_id).to_a
-      LoggerHelper.print_to_log("Got kernels_of_droplet(#{droplet_name})")
+      OnlyofficeLoggerHelper.log("Got kernels_of_droplet(#{droplet_name})")
       kernels
     end
 
@@ -123,7 +123,7 @@ module OnlyofficeDigitaloceanWrapper
       image_id = get_image_id_by_name(image_name)
       droplet = DropletKit::Droplet.new(name: droplet_name, region: region, image: image_id.to_i, size: size)
       created = @client.droplets.create(droplet)
-      LoggerHelper.print_to_log("restore_image_by_name(#{image_name}, #{droplet_name})")
+      OnlyofficeLoggerHelper.log("restore_image_by_name(#{image_name}, #{droplet_name})")
       raise "Problem, while creating '#{droplet_name}' from image '#{image_name}'\n" \
     "Error: #{created}" if created.is_a?(String)
       created
@@ -150,7 +150,7 @@ module OnlyofficeDigitaloceanWrapper
     def destroy_droplet_by_name(droplet_name = 'nct-at1')
       droplet_id = get_droplet_id_by_name(droplet_name)
       client.droplets.delete(id: droplet_id)
-      LoggerHelper.print_to_log("destroy_droplet_by_name(#{droplet_name})")
+      OnlyofficeLoggerHelper.log("destroy_droplet_by_name(#{droplet_name})")
       wait_until_droplet_have_status(droplet_name, nil)
     end
 
