@@ -3,7 +3,7 @@ require 'onlyoffice_logger_helper'
 require_relative 'digitalocean_wrapper/digitalocean_exceptions'
 
 module OnlyofficeDigitaloceanWrapper
-# Class for wrapping DigitalOcean API gem
+  # Class for wrapping DigitalOcean API gem
   class DigitalOceanWrapper
     attr_accessor :client
 
@@ -119,13 +119,19 @@ module OnlyofficeDigitaloceanWrapper
       wait_until_droplet_have_status(droplet_name)
     end
 
-    def restore_image_by_name(image_name = 'nct-at-stable', droplet_name = image_name, region = 'nyc2', size = '2gb')
+    def restore_image_by_name(image_name = 'nct-at-stable', droplet_name = image_name, region = 'nyc2', size = '2gb', tags: nil)
       image_id = get_image_id_by_name(image_name)
-      droplet = DropletKit::Droplet.new(name: droplet_name, region: region, image: image_id.to_i, size: size)
+      droplet = DropletKit::Droplet.new(name: droplet_name,
+                                        region: region,
+                                        image: image_id.to_i,
+                                        tags: Array(tags),
+                                        size: size)
       created = @client.droplets.create(droplet)
       OnlyofficeLoggerHelper.log("restore_image_by_name(#{image_name}, #{droplet_name})")
-      raise "Problem, while creating '#{droplet_name}' from image '#{image_name}'\n" \
-    "Error: #{created}" if created.is_a?(String)
+      if created.is_a?(String)
+        raise "Problem, while creating '#{droplet_name}' from image '#{image_name}'\n" \
+              "Error: #{created}"
+      end
       created
     end
 

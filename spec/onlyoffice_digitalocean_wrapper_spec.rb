@@ -79,7 +79,7 @@ describe OnlyofficeDigitaloceanWrapper::DigitalOceanWrapper, retry: 1, use_priva
 
   context 'Operation' do
     before :all do
-      digital_ocean.restore_image_by_name(existing_image_name, 'wrapper-test')
+      digital_ocean.restore_image_by_name(existing_image_name, 'wrapper-test', tags: 'wrapper-tag')
       digital_ocean.wait_until_droplet_have_status('wrapper-test')
     end
 
@@ -103,6 +103,10 @@ describe OnlyofficeDigitaloceanWrapper::DigitalOceanWrapper, retry: 1, use_priva
     it 'reboot_droplet' do
       digital_ocean.reboot_droplet('wrapper-test')
       expect(digital_ocean.get_droplet_status_by_name('wrapper-test')).to eq('active')
+    end
+
+    it 'check that instance have correct tag' do
+      expect(digital_ocean.droplet_by_name('wrapper-test').tags.first).to eq('wrapper-tag')
     end
 
     it 'destroy_droplet_by_name' do
