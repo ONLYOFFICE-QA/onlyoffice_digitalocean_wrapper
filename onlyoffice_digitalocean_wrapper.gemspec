@@ -18,5 +18,6 @@ Gem::Specification.new do |spec|
 
   spec.add_runtime_dependency('activesupport', '~> 4')
   spec.add_runtime_dependency('droplet_kit', '~> 1')
+  spec.add_runtime_dependency('onlyoffice_logger_helper', '1.0.0')
   spec.license = 'AGPL-3.0'
 end
