@@ -30,7 +30,7 @@ module OnlyofficeDigitaloceanWrapper
       return if correct_access_token?
       @client = DropletKit::Client.new(access_token: DigitalOceanWrapper.read_token)
       return if correct_access_token?
-      raise ArgumentError, 'Access token for DigitalOcean API is incorect'
+      raise ArgumentError, 'Access token for DigitalOcean API is incorrect'
     end
 
     def get_image_id_by_name(image_name)
@@ -99,7 +99,8 @@ module OnlyofficeDigitaloceanWrapper
       while get_droplet_status_by_name(droplet_name) != status && counter < timeout
         counter += 10
         sleep 10
-        OnlyofficeLoggerHelper.log("waiting for droplet (#{droplet_name}) to have status: #{status} for #{counter} seconds of #{timeout}")
+        OnlyofficeLoggerHelper.log("waiting for droplet (#{droplet_name}) to have "\
+                                   "status: #{status} for #{counter} seconds of #{timeout}")
       end
       get_droplet_status_by_name(droplet_name)
     end
@@ -111,7 +112,11 @@ module OnlyofficeDigitaloceanWrapper
       kernels
     end
 
-    def restore_image_by_name(image_name = 'nct-at-stable', droplet_name = image_name, region = 'nyc2', size = '2gb', tags: nil)
+    def restore_image_by_name(image_name = 'nct-at-stable',
+                              droplet_name = image_name,
+                              region = 'nyc2',
+                              size = '2gb',
+                              tags: nil)
       image_id = get_image_id_by_name(image_name)
       droplet = DropletKit::Droplet.new(name: droplet_name,
                                         region: region,
