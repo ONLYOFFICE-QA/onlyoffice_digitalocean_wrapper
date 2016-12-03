@@ -83,13 +83,6 @@ describe OnlyofficeDigitaloceanWrapper::DigitalOceanWrapper, retry: 1, use_priva
       digital_ocean.wait_until_droplet_have_status('wrapper-test')
     end
 
-    it 'change_kernel' do
-      pending('Kernel changing is not working in current images. It is obsolute')
-      expect(digital_ocean.current_kernel('wrapper-test')).not_to eq('Ubuntu 14.04 x64 vmlinuz-3.13.0-52-generic')
-      digital_ocean.change_kernel('wrapper-test', 'Ubuntu 14.04 x64 vmlinuz-3.13.0-52-generic')
-      expect(digital_ocean.current_kernel('wrapper-test')).to eq('Ubuntu 14.04 x64 vmlinuz-3.13.0-52-generic')
-    end
-
     it 'power_off_droplet' do
       digital_ocean.power_off_droplet('wrapper-test')
       expect(digital_ocean.get_droplet_status_by_name('wrapper-test')).to eq('off')
