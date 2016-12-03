@@ -22,7 +22,7 @@ describe OnlyofficeDigitaloceanWrapper::DigitalOceanWrapper, retry: 1, use_priva
       expect(digital_ocean.get_image_id_by_name(existing_image_name)).to be_a(Integer)
     end
 
-    it 'get_image_id_by_name for nonexisting image' do
+    it 'get_image_id_by_name for non-existing image' do
       expect { digital_ocean.get_image_id_by_name(non_existing_image_name) }
         .to raise_error(OnlyofficeDigitaloceanWrapper::DigitalOceanImageNotFound, non_existing_image_name)
     end
@@ -58,7 +58,7 @@ describe OnlyofficeDigitaloceanWrapper::DigitalOceanWrapper, retry: 1, use_priva
     expect(digital_ocean.get_droplet_status_by_name('testrail')).to eq('active')
   end
 
-  it 'get_droplet_status_by_name nonexisting droplet' do
+  it 'get_droplet_status_by_name non-existing droplet' do
     expect(digital_ocean.get_droplet_status_by_name('not testrail')).to be_nil
   end
 
