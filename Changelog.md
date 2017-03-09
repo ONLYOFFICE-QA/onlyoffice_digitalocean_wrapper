@@ -1,5 +1,8 @@
 # Change log
 
+# unreleased (master)
+* Add check of droplet size for creation
+
 # 0.2.0
 * Force use ruby 2.2 to be able use `activesupport 5` 
 

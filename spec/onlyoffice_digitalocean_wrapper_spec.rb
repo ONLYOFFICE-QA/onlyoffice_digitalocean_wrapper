@@ -3,6 +3,7 @@ require 'spec_helper'
 digital_ocean = nil
 existing_image_name = 'nct-at-docker'
 non_existing_image_name = 'incorrect-image-name'
+incorrect_droplet_size = '128gb'
 
 describe OnlyofficeDigitaloceanWrapper::DigitalOceanWrapper, retry: 1, use_private_key: true do
   before :all do
@@ -62,11 +63,23 @@ describe OnlyofficeDigitaloceanWrapper::DigitalOceanWrapper, retry: 1, use_priva
     expect(digital_ocean.get_droplet_status_by_name('not testrail')).to be_nil
   end
 
-  it 'restore_image_by_name' do
-    digital_ocean.restore_image_by_name(existing_image_name, 'wrapper-test')
-    digital_ocean.wait_until_droplet_have_status('wrapper-test')
-    digital_ocean.destroy_droplet_by_name('wrapper-test')
-    expect(digital_ocean.get_droplet_id_by_name('wrapper-test')).to be_nil
+  describe 'Restore image by name' do
+    it 'restore_image_by_name with incorrect size' do
+      expect do
+        digital_ocean.restore_image_by_name(existing_image_name,
+                                            'wrapper-test',
+                                            'nyc2',
+                                            incorrect_droplet_size)
+      end.to raise_error(OnlyofficeDigitaloceanWrapper::DigitalOceanSizeNotSupported,
+                         /There is no support of droplets with size: #{incorrect_droplet_size}/)
+    end
+
+    it 'restore_image_by_name' do
+      digital_ocean.restore_image_by_name(existing_image_name, 'wrapper-test')
+      digital_ocean.wait_until_droplet_have_status('wrapper-test')
+      digital_ocean.destroy_droplet_by_name('wrapper-test')
+      expect(digital_ocean.get_droplet_id_by_name('wrapper-test')).to be_nil
+    end
   end
 
   it 'kernels_of_droplet' do

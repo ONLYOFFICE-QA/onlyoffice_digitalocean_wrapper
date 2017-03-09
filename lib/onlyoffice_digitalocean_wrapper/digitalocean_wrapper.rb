@@ -5,6 +5,7 @@ require_relative 'digitalocean_wrapper/digitalocean_exceptions'
 module OnlyofficeDigitaloceanWrapper
   # Class for wrapping DigitalOcean API gem
   class DigitalOceanWrapper
+    DROPLET_SIZES = %w(512mb 1gb 2gb 4gb 8gb 16gb 32gb 48gb 64gb).freeze
     attr_accessor :client
 
     def initialize(access_token = nil)
@@ -117,6 +118,10 @@ module OnlyofficeDigitaloceanWrapper
                               region = 'nyc2',
                               size = '2gb',
                               tags: nil)
+      unless DROPLET_SIZES.include?(size)
+        raise DigitalOceanSizeNotSupported,
+              "There is no support of droplets with size: #{size}"
+      end
       image_id = get_image_id_by_name(image_name)
       droplet = DropletKit::Droplet.new(name: droplet_name,
                                         region: region,
