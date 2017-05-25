@@ -6,7 +6,7 @@ Gem::Specification.new do |spec|
   spec.name          = 'onlyoffice_digitalocean_wrapper'
   spec.version       = OnlyofficeDigitaloceanWrapper::VERSION
   spec.authors       = ['Pavel Lobashov', 'Oleg Nazarov']
-  spec.email         = %w(shockwavenn@gmail.com nazarov90@gmail.com)
+  spec.email         = %w[shockwavenn@gmail.com nazarov90@gmail.com]
 
   spec.summary       = 'Wrapper gem for DigitalOcean'
   spec.description   = 'Wrapper gem for DigitalOcean. Use in testing projects'

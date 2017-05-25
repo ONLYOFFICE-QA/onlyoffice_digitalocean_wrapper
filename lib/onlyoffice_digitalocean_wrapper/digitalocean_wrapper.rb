@@ -5,7 +5,7 @@ require_relative 'digitalocean_wrapper/digitalocean_exceptions'
 module OnlyofficeDigitaloceanWrapper
   # Class for wrapping DigitalOcean API gem
   class DigitalOceanWrapper
-    DROPLET_SIZES = %w(512mb 1gb 2gb 4gb 8gb 16gb 32gb 48gb 64gb).freeze
+    DROPLET_SIZES = %w[512mb 1gb 2gb 4gb 8gb 16gb 32gb 48gb 64gb].freeze
     attr_accessor :client
 
     def initialize(access_token = nil)
