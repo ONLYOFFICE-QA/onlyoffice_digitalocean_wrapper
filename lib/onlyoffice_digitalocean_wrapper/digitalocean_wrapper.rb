@@ -1,6 +1,7 @@
 require 'droplet_kit'
 require 'onlyoffice_logger_helper'
 require_relative 'digitalocean_wrapper/digitalocean_exceptions'
+require_relative 'digitalocean_wrapper/exceptions_retryer'
 require_relative 'digitalocean_wrapper/getters'
 require_relative 'digitalocean_wrapper/power_actions'
 require_relative 'digitalocean_wrapper/token_methods'
@@ -9,6 +10,7 @@ module OnlyofficeDigitaloceanWrapper
   # Class for wrapping DigitalOcean API gem
   class DigitalOceanWrapper
     include Getters
+    include ExceptionsRetryer
     include PowerActions
     include TokenMethods
 

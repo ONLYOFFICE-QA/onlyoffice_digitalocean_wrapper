@@ -47,10 +47,12 @@ module OnlyofficeDigitaloceanWrapper
         OnlyofficeLoggerHelper.log("get_droplet_status_by_name(#{droplet_name}): not found any droplets")
         nil
       else
-        status = droplet.status
-        status = :locked if droplet.locked
-        OnlyofficeLoggerHelper.log("get_droplet_status_by_name(#{droplet_name}): #{status}")
-        status
+        retry_exception do
+          status = droplet.status
+          status = :locked if droplet.locked
+          OnlyofficeLoggerHelper.log("get_droplet_status_by_name(#{droplet_name}): #{status}")
+          status
+        end
       end
     end
   end
