@@ -14,7 +14,7 @@ describe OnlyofficeDigitaloceanWrapper::DigitalOceanWrapper, retry: 1 do
       expect do
         digital_ocean.restore_image_by_name(existing_image_name,
                                             'wrapper-test',
-                                            'nyc2',
+                                            'nyc3',
                                             incorrect_droplet_size)
       end.to raise_error(OnlyofficeDigitaloceanWrapper::DigitalOceanSizeNotSupported,
                          /There is no support of droplets with size: #{incorrect_droplet_size}/)

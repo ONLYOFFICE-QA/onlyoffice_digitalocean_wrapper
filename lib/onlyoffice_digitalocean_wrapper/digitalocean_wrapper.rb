@@ -49,7 +49,7 @@ module OnlyofficeDigitaloceanWrapper
 
     def restore_image_by_name(image_name = 'nct-at-stable',
                               droplet_name = image_name,
-                              region = 'nyc2',
+                              region = 'nyc3',
                               size = '2gb',
                               tags: nil)
       unless DROPLET_SIZES.include?(size)
