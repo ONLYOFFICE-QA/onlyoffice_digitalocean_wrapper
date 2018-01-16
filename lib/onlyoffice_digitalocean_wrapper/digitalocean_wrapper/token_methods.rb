@@ -12,15 +12,6 @@ module OnlyofficeDigitaloceanWrapper
       true
     end
 
-    # Check if token is correct. If not trying to read new token
-    # If reading failed - fail
-    def assure_correct_token
-      return if correct_access_token?
-      @client = DropletKit::Client.new(access_token: DigitalOceanWrapper.read_token)
-      return if correct_access_token?
-      raise ArgumentError, 'Access token for DigitalOcean API is incorrect'
-    end
-
     # Read access token from file system
     # @return [String] token
     def read_token

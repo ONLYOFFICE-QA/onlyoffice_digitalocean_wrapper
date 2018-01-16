@@ -5,6 +5,7 @@
 * Do not force 2.0.1 of `droplet_kit`
 * Change default region to `nyc3`
 * Add ability to retry request if error happened
+* Do not try to read new token if old token is incorrect
 
 # 0.2.0
 * Force use ruby 2.2 to be able use `activesupport 5` 
