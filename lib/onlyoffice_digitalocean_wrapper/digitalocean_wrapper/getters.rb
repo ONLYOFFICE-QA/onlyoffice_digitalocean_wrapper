@@ -14,9 +14,11 @@ module OnlyofficeDigitaloceanWrapper
     # @param [String] droplet_name
     # @return [DropletKit::Droplet] droplet
     def droplet_by_name(droplet_name)
-      assure_correct_token
-      droplets = @client.droplets.all
-      droplets.find { |x| x.name == droplet_name }
+      retry_exception do
+        assure_correct_token
+        droplets = @client.droplets.all
+        droplets.find { |x| x.name == droplet_name }
+      end
     end
 
     def get_droplet_id_by_name(droplet_name)
@@ -36,9 +38,11 @@ module OnlyofficeDigitaloceanWrapper
         OnlyofficeLoggerHelper.log("There is no created droplet with name: #{droplet_name}")
         return
       end
-      ip = droplet.networks.first.first.ip_address
-      OnlyofficeLoggerHelper.log("get_droplet_ip_by_name(#{droplet_name}): #{ip}")
-      ip
+      retry_exception do
+        ip = droplet.networks.first.first.ip_address
+        OnlyofficeLoggerHelper.log("get_droplet_ip_by_name(#{droplet_name}): #{ip}")
+        ip
+      end
     end
 
     def get_droplet_status_by_name(droplet_name)
