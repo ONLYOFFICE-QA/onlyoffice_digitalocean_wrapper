@@ -2,7 +2,6 @@ module OnlyofficeDigitaloceanWrapper
   # Get image, droplet by metadata
   module Getters
     def get_image_id_by_name(image_name)
-      assure_correct_token
       all_droplets = @client.images.all
       image = all_droplets.find { |x| x.name == image_name }
       raise DigitalOceanImageNotFound, image_name if image.nil?
@@ -15,7 +14,6 @@ module OnlyofficeDigitaloceanWrapper
     # @return [DropletKit::Droplet] droplet
     def droplet_by_name(droplet_name)
       retry_exception do
-        assure_correct_token
         droplets = @client.droplets.all
         droplets.find { |x| x.name == droplet_name }
       end
