@@ -44,6 +44,13 @@ describe OnlyofficeDigitaloceanWrapper::DigitalOceanWrapper, retry: 1 do
       expect(digital_ocean.get_droplet_status_by_name('wrapper-test')).to eq('active')
     end
 
+    it 'wait_until_droplet_have_status' do
+      expect do
+        digital_ocean.wait_until_droplet_have_status('wrapper-test', 'destroyed', timeout: 10)
+      end.to raise_error(OnlyofficeDigitaloceanWrapper::DropletOperationTimeout,
+                         'wrapper-test was not destroyed for 10s')
+    end
+
     it 'reboot_droplet' do
       digital_ocean.reboot_droplet('wrapper-test')
       expect(digital_ocean.get_droplet_status_by_name('wrapper-test')).to eq('active')

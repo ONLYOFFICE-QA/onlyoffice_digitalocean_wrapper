@@ -6,4 +6,8 @@ module OnlyofficeDigitaloceanWrapper
   # Class raised if droplet size is not supported
   class DigitalOceanSizeNotSupported < StandardError
   end
+
+  # Class raised if droplet opertaion is timeout
+  class DropletOperationTimeout < StandardError
+  end
 end

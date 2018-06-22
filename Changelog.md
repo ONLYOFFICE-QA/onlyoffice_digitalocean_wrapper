@@ -7,6 +7,9 @@
 * Add ability to retry request if error happened
 * Do not try to read new token if old token is incorrect
 
+### changes
+* `wait_until_droplet_have_status` now raise DropletOperationTimeout if timeout reached
+
 # 0.2.0
 * Force use ruby 2.2 to be able use `activesupport 5` 
 
