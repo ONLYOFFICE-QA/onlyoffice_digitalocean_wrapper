@@ -30,8 +30,8 @@ module OnlyofficeDigitaloceanWrapper
       kernel_name
     end
 
-    def wait_until_droplet_have_status(droplet_name, status = 'active')
-      timeout = 300
+    def wait_until_droplet_have_status(droplet_name, status = 'active', params = {})
+      timeout = params.fetch(:timeout, 300)
       counter = 0
       while get_droplet_status_by_name(droplet_name) != status && counter < timeout
         counter += 10
@@ -39,6 +39,7 @@ module OnlyofficeDigitaloceanWrapper
         OnlyofficeLoggerHelper.log("waiting for droplet (#{droplet_name}) to have "\
                                    "status: #{status} for #{counter} seconds of #{timeout}")
       end
+      raise DropletOperationTimeout, "#{droplet_name} was not #{status} for #{timeout}s" if counter >= timeout
       get_droplet_status_by_name(droplet_name)
     end
 
