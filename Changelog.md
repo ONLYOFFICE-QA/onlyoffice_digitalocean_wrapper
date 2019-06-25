@@ -1,6 +1,10 @@
 # Change log
 
 # unreleased (master)
+
+## New Features
+
+* Update `droplet_kit` for major ver. 3
 * Add check of droplet size for creation
 * Do not force 2.0.1 of `droplet_kit`
 * Change default region to `nyc3`
