@@ -17,7 +17,7 @@ Gem::Specification.new do |spec|
   spec.required_ruby_version = ['>= 2.2']
 
   spec.add_runtime_dependency('activesupport', '~> 5')
-  spec.add_runtime_dependency('droplet_kit', '~> 2')
+  spec.add_runtime_dependency('droplet_kit', '>= 2', '< 4')
   spec.add_runtime_dependency('onlyoffice_logger_helper', '~> 1')
   spec.license = 'AGPL-3.0'
 end
