@@ -5,6 +5,7 @@ module OnlyofficeDigitaloceanWrapper
       all_droplets = @client.images.all
       image = all_droplets.find { |x| x.name == image_name }
       raise DigitalOceanImageNotFound, image_name if image.nil?
+
       OnlyofficeLoggerHelper.log("get_image_id_by_name(#{image_name}): #{image.id}")
       image.id
     end

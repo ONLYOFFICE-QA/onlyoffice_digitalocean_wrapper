@@ -14,14 +14,6 @@ Gemspec/RequiredRubyVersion:
     - 'onlyoffice_digitalocean_wrapper.gemspec'
 
 # Offense count: 3
-# Cop supports --auto-correct.
-Layout/EmptyLineAfterGuardClause:
-  Exclude:
-    - 'lib/onlyoffice_digitalocean_wrapper/digitalocean_wrapper.rb'
-    - 'lib/onlyoffice_digitalocean_wrapper/digitalocean_wrapper/getters.rb'
-    - 'lib/onlyoffice_digitalocean_wrapper/digitalocean_wrapper/token_methods.rb'
-
-# Offense count: 3
 # Configuration parameters: CountComments, ExcludedMethods.
 # ExcludedMethods: refine
 Metrics/BlockLength:

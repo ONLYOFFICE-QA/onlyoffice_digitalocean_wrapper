@@ -40,6 +40,7 @@ module OnlyofficeDigitaloceanWrapper
                                    "status: #{status} for #{counter} seconds of #{timeout}")
       end
       raise DropletOperationTimeout, "#{droplet_name} was not #{status} for #{timeout}s" if counter >= timeout
+
       get_droplet_status_by_name(droplet_name)
     end
 
