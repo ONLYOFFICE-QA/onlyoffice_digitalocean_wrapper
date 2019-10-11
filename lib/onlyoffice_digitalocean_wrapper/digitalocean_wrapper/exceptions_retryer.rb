@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module OnlyofficeDigitaloceanWrapper
   # Module to ignore DigitalOcean exception if they happen irregularly
   module ExceptionsRetryer

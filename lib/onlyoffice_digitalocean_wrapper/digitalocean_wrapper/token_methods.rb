@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module OnlyofficeDigitaloceanWrapper
   # Methods to login in account
   module TokenMethods

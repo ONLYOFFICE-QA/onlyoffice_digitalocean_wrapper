@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module OnlyofficeDigitaloceanWrapper
   # Actions with power (turn on/off, reboot)
   module PowerActions

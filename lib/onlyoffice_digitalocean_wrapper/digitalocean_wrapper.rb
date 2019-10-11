@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'droplet_kit'
 require 'onlyoffice_logger_helper'
 require_relative 'digitalocean_wrapper/digitalocean_exceptions'

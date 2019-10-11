@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module OnlyofficeDigitaloceanWrapper
   # Get image, droplet by metadata
   module Getters
