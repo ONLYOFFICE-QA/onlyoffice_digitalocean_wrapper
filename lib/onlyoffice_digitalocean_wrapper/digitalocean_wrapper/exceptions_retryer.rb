@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module OnlyofficeDigitaloceanWrapper
   # Module to ignore DigitalOcean exception if they happen irregularly
   module ExceptionsRetryer
@@ -11,9 +13,9 @@ module OnlyofficeDigitaloceanWrapper
       try = 0
       begin
         yield
-      rescue exception => exp
+      rescue exception => e
         try += 1
-        OnlyofficeLoggerHelper.log("Error '#{exception}, #{exp}' happened during "\
+        OnlyofficeLoggerHelper.log("Error '#{exception}, #{e}' happened during "\
                                    "operation. Retrying #{try} of #{retries}")
         sleep timeout # Time to cooldown error
         try <= retries ? retry : raise

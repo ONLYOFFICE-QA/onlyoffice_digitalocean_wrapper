@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'droplet_kit'
 require 'onlyoffice_logger_helper'
 require_relative 'digitalocean_wrapper/digitalocean_exceptions'
@@ -40,6 +42,7 @@ module OnlyofficeDigitaloceanWrapper
                                    "status: #{status} for #{counter} seconds of #{timeout}")
       end
       raise DropletOperationTimeout, "#{droplet_name} was not #{status} for #{timeout}s" if counter >= timeout
+
       get_droplet_status_by_name(droplet_name)
     end
 
