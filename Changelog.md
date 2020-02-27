@@ -10,6 +10,7 @@
 * Change default region to `nyc3`
 * Add ability to retry request if error happened
 * Do not try to read new token if old token is incorrect
+* Add Rakefile and tasks for releasing gem
 
 ### changes
 * `wait_until_droplet_have_status` now raise DropletOperationTimeout if timeout reached
