@@ -2,6 +2,8 @@
 
 # unreleased (master)
 
+# 0.3.0 (2020-02-27) 
+
 ## New Features
 
 * Update `droplet_kit` for major ver. 3
