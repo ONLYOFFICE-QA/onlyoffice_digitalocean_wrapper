@@ -38,5 +38,5 @@ Access token can be initialized in two ways:
 2. Set to `DO_ACCESS_TOKEN` env. Can be setup via `~/.bashrc`
 
     ```bash
-    echo "export DO_ACCESS_TOKEN='token' > ~/.bashrc
+    echo "export DO_ACCESS_TOKEN='token'" >> ~/.bashrc
     ```
