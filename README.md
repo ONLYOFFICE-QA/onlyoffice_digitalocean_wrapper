@@ -28,15 +28,15 @@ You should get access token via
 visiting [this](https://cloud.digitalocean.com/account/api/tokens) url  
 Access token can be initialized in two ways:
 
-*. Save to `~/.do/access_token`  
+1. Save to `~/.do/access_token`  
 
-```bash
-mkdir ~/.do
-echo 'token' > ~/.do/access_token
-```
+    ```bash
+    mkdir ~/.do
+    echo 'token' > ~/.do/access_token
+    ```
 
-*. Set to `DO_ACCESS_TOKEN` env. Can be setup via `~/.bashrc`
+2. Set to `DO_ACCESS_TOKEN` env. Can be setup via `~/.bashrc`
 
-```bash
-echo "export DO_ACCESS_TOKEN='token' > ~/.bashrc
-```
+    ```bash
+    echo "export DO_ACCESS_TOKEN='token' > ~/.bashrc
+    ```
