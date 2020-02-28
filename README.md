@@ -26,7 +26,7 @@ gem install onlyoffice_digitalocean_wrapper
 
 You should get access token via
 visiting [this](https://cloud.digitalocean.com/account/api/tokens) url  
-Access token can be initialized ini two ways:
+Access token can be initialized in two ways:
 
 *. Save to `~/.do/access_token`  
 
