@@ -67,6 +67,7 @@ module OnlyofficeDigitaloceanWrapper
                                         region: region,
                                         image: image_id.to_i,
                                         tags: Array(tags),
+                                        monitoring: true,
                                         size: size)
       created = @client.droplets.create(droplet)
       OnlyofficeLoggerHelper.log("restore_image_by_name(#{image_name}, #{droplet_name})")
