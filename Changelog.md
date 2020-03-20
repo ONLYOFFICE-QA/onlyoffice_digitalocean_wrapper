@@ -10,6 +10,7 @@
 
 * Cleanup gemspec
 * `rake` is developer dependency
+* Remove all kernel methods
 
 # 0.3.0 (2020-02-27) 
 
