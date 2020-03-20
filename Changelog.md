@@ -2,6 +2,8 @@
 
 # unreleased (master)
 
+# 0.4.0 (2020-03-20)
+
 ## New features
 
 * Droplet are created with enabled monitoring
