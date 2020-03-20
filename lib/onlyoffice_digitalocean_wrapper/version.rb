@@ -2,4 +2,5 @@
 
 module OnlyofficeDigitaloceanWrapper
   VERSION = '0.3.0'
+  NAME = 'onlyoffice_digitalocean_wrapper'
 end
