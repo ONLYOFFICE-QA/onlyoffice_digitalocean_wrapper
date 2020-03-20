@@ -12,6 +12,5 @@ end
 
 group :development do
   gem 'overcommit', require: false
-  gem 'rake'
   gem 'rubocop', require: false
 end

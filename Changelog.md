@@ -6,6 +6,11 @@
 
 * Droplet are created with enabled monitoring
 
+## Changes
+
+* Cleanup gemspec
+* `rake` is developer dependency
+
 # 0.3.0 (2020-02-27) 
 
 ## New Features
