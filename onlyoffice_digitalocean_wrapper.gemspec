@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative 'onlyoffice_digitalocean_wrapper/version'
+require_relative 'lib/onlyoffice_digitalocean_wrapper/version'
 
 Gem::Specification.new do |s|
   s.name = OnlyofficeDigitaloceanWrapper::NAME
