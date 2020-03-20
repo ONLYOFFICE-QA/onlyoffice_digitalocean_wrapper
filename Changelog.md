@@ -5,6 +5,7 @@
 ## New features
 
 * Droplet are created with enabled monitoring
+* Add rake task to release gem
 
 ## Changes
 
