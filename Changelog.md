@@ -2,6 +2,10 @@
 
 # unreleased (master)
 
+## New Features
+
+* Add support of `markdownlint` in CI
+
 ## Changes
 
 * Use GitHub Actions instead of Travis CI
