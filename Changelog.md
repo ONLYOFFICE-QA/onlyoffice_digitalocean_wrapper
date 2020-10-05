@@ -2,6 +2,12 @@
 
 # unreleased (master)
 
+# 0.4.1 (2020-10-05)
+
+## Fixes
+
+* Get public ip of created Droplet
+
 # 0.4.0 (2020-03-20)
 
 ## New features
