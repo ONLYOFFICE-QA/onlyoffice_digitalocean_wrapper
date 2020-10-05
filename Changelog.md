@@ -1,37 +1,37 @@
 # Change log
 
-# unreleased (master)
+## unreleased (master)
 
-## New Features
+### New Features
 
 * Add support of `markdownlint` in CI
 
-## Changes
+### Changes
 
 * Use GitHub Actions instead of Travis CI
 
-# 0.4.1 (2020-10-05)
+## 0.4.1 (2020-10-05)
 
-## Fixes
+### Fixes
 
 * Get public ip of created Droplet
 
-# 0.4.0 (2020-03-20)
+## 0.4.0 (2020-03-20)
 
-## New features
+### New features
 
 * Droplet are created with enabled monitoring
 * Add rake task to release gem
 
-## Changes
+### Changes
 
 * Cleanup gemspec
 * `rake` is developer dependency
 * Remove all kernel methods
 
-# 0.3.0 (2020-02-27) 
+## 0.3.0 (2020-02-27)
 
-## New Features
+### New Features
 
 * Update `droplet_kit` for major ver. 3
 * Add check of droplet size for creation
@@ -41,15 +41,19 @@
 * Do not try to read new token if old token is incorrect
 * Add Rakefile and tasks for releasing gem
 
-### changes
+### Changes
+
 * `wait_until_droplet_have_status` now raise DropletOperationTimeout if timeout reached
 * Remove `activesupport` dependency
 
-# 0.2.0
-* Force use ruby 2.2 to be able use `activesupport 5` 
+## 0.2.0
 
-# 0.1.0
+* Force use ruby 2.2 to be able use `activesupport 5`
+
+## 0.1.0
+
 * Add ability to set tags for restored instances
 
 ## 0.0.1
+
 * Initial release of `onlyoffice_webdriver_wrapper` gem
