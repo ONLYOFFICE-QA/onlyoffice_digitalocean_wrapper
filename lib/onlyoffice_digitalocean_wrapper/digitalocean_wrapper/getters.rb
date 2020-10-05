@@ -40,7 +40,7 @@ module OnlyofficeDigitaloceanWrapper
         return
       end
       retry_exception do
-        ip = droplet.networks.first.first.ip_address
+        ip = public_ip(droplet)
         OnlyofficeLoggerHelper.log("get_droplet_ip_by_name(#{droplet_name}): #{ip}")
         ip
       end
@@ -59,6 +59,15 @@ module OnlyofficeDigitaloceanWrapper
           status
         end
       end
+    end
+
+    # Get public ip of droplet
+    # @param [DropletKit] droplet to get ip
+    # @return [String] public ip
+    def public_ip(droplet)
+      networks = droplet.networks.to_a.first
+      public_network = networks.find { |net| net.type == 'public'}
+      public_network.ip_address
     end
   end
 end

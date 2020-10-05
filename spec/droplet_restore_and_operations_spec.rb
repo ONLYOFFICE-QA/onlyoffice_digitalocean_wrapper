@@ -25,6 +25,7 @@ describe OnlyofficeDigitaloceanWrapper::DigitalOceanWrapper, retry: 1 do
     it 'restore_image_by_name' do
       digital_ocean.restore_image_by_name(existing_image_name, 'wrapper-test')
       digital_ocean.wait_until_droplet_have_status('wrapper-test')
+      digital_ocean.get_droplet_ip_by_name('wrapper-test')
       digital_ocean.destroy_droplet_by_name('wrapper-test')
       expect(digital_ocean.get_droplet_id_by_name('wrapper-test')).to be_nil
     end
