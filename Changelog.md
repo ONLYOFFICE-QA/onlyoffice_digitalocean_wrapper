@@ -2,6 +2,10 @@
 
 # unreleased (master)
 
+## Changes
+
+* Use GitHub Actions instead of Travis CI
+
 # 0.4.1 (2020-10-05)
 
 ## Fixes
