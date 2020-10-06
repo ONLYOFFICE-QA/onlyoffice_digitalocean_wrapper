@@ -3,7 +3,7 @@
 require 'spec_helper'
 
 describe OnlyofficeDigitaloceanWrapper::ExceptionsRetryer do
-  include OnlyofficeDigitaloceanWrapper::ExceptionsRetryer
+  include described_class
 
   it 'exception retryer retry exact specified times' do
     retries = 0

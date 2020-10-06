@@ -5,10 +5,15 @@
 ### New Features
 
 * Add support of `markdownlint` in CI
+* Add `rubocop` check in CI
+* Add support of `rubocop-performance`, `rubocop-rake` and `rubocop-rspec`
 
 ### Changes
 
 * Use GitHub Actions instead of Travis CI
+* Freeze specific `rubocop` version in gemspec
+* Actualize rubocop todo to `0.92.0` and fix some issues
+* Drop support of ruby <= 2.4 since they're EOLed
 
 ## 0.4.1 (2020-10-05)
 

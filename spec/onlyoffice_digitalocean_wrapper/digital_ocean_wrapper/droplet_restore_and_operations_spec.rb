@@ -8,7 +8,7 @@ digital_ocean = nil
 
 describe OnlyofficeDigitaloceanWrapper::DigitalOceanWrapper, retry: 1 do
   before :all do
-    digital_ocean = OnlyofficeDigitaloceanWrapper::DigitalOceanWrapper.new
+    digital_ocean = described_class.new
   end
 
   describe 'Restore image by name' do
@@ -30,10 +30,14 @@ describe OnlyofficeDigitaloceanWrapper::DigitalOceanWrapper, retry: 1 do
     end
   end
 
-  context 'Operation' do
+  describe 'Operation' do
     before :all do
       digital_ocean.restore_image_by_name(existing_image_name, 'wrapper-test', tags: 'wrapper-tag')
       digital_ocean.wait_until_droplet_have_status('wrapper-test')
+    end
+
+    after :all do
+      digital_ocean.destroy_droplet_by_name('wrapper-test') if digital_ocean.get_droplet_id_by_name('wrapper-test')
     end
 
     it 'power_off_droplet' do
@@ -65,10 +69,6 @@ describe OnlyofficeDigitaloceanWrapper::DigitalOceanWrapper, retry: 1 do
     it 'destroy_droplet_by_name' do
       digital_ocean.destroy_droplet_by_name('wrapper-test')
       expect(digital_ocean.get_droplet_id_by_name('wrapper-test')).to be_nil
-    end
-
-    after :all do
-      digital_ocean.destroy_droplet_by_name('wrapper-test') if digital_ocean.get_droplet_id_by_name('wrapper-test')
     end
   end
 end

@@ -2,10 +2,10 @@
 
 require 'spec_helper'
 
-describe 'DigitalOceanWrapper get droplet data' do
+describe OnlyofficeDigitaloceanWrapper::DigitalOceanWrapper, '#droplet_by_name' do
   existing_droplet = 'bugzilla.onlyoffice.com'
   nonexisting_droplet = 'not bugzilla'
-  let(:digital_ocean) { OnlyofficeDigitaloceanWrapper::DigitalOceanWrapper.new }
+  let(:digital_ocean) { described_class.new }
 
   it 'get_droplet_by_name with existing name' do
     expect(digital_ocean.droplet_by_name(existing_droplet)).to be_a(DropletKit::Droplet)
