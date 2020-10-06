@@ -36,6 +36,10 @@ describe OnlyofficeDigitaloceanWrapper::DigitalOceanWrapper, retry: 1 do
       digital_ocean.wait_until_droplet_have_status('wrapper-test')
     end
 
+    after :all do
+      digital_ocean.destroy_droplet_by_name('wrapper-test') if digital_ocean.get_droplet_id_by_name('wrapper-test')
+    end
+
     it 'power_off_droplet' do
       digital_ocean.power_off_droplet('wrapper-test')
       expect(digital_ocean.get_droplet_status_by_name('wrapper-test')).to eq('off')
@@ -65,10 +69,6 @@ describe OnlyofficeDigitaloceanWrapper::DigitalOceanWrapper, retry: 1 do
     it 'destroy_droplet_by_name' do
       digital_ocean.destroy_droplet_by_name('wrapper-test')
       expect(digital_ocean.get_droplet_id_by_name('wrapper-test')).to be_nil
-    end
-
-    after :all do
-      digital_ocean.destroy_droplet_by_name('wrapper-test') if digital_ocean.get_droplet_id_by_name('wrapper-test')
     end
   end
 end

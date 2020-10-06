@@ -60,9 +60,3 @@ RSpec/ExampleLength:
 RSpec/FilePath:
   Exclude:
     - 'spec/droplet_restore_and_operations_spec.rb'
-
-# Offense count: 1
-# Cop supports --auto-correct.
-RSpec/HooksBeforeExamples:
-  Exclude:
-    - 'spec/droplet_restore_and_operations_spec.rb'
