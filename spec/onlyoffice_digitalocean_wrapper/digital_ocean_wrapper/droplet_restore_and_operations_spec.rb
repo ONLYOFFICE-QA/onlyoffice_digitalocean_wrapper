@@ -30,7 +30,7 @@ describe OnlyofficeDigitaloceanWrapper::DigitalOceanWrapper, retry: 1 do
     end
   end
 
-  context 'Operation' do
+  describe 'Operation' do
     before :all do
       digital_ocean.restore_image_by_name(existing_image_name, 'wrapper-test', tags: 'wrapper-tag')
       digital_ocean.wait_until_droplet_have_status('wrapper-test')
