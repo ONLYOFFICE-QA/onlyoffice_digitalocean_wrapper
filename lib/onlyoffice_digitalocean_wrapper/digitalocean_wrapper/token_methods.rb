@@ -15,14 +15,17 @@ module OnlyofficeDigitaloceanWrapper
     end
 
     # Read access token from file system
+    # @param token_file_path [String] path to token
+    # @param force_file_read [True, False] should read from file be forced
     # @return [String] token
-    def read_token
-      return ENV['DO_ACCESS_TOKEN'] if ENV['DO_ACCESS_TOKEN']
+    def read_token(token_file_path: "#{Dir.home}/.do/access_token",
+                   force_file_read: false)
+      return ENV['DO_ACCESS_TOKEN'] if ENV['DO_ACCESS_TOKEN'] && !force_file_read
 
-      File.read("#{Dir.home}/.do/access_token").delete("\n")
+      File.read(token_file_path).delete("\n")
     rescue Errno::ENOENT
-      raise Errno::ENOENT, "No access token found in #{Dir.home}/.do/ directory." \
-      "Please create files #{Dir.home}/.do/access_token"
+      raise Errno::ENOENT, "No access token found in #{token_file_path}. " \
+      "Please create file #{token_file_path} with token"
     end
   end
 end
