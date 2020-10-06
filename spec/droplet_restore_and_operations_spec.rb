@@ -8,7 +8,7 @@ digital_ocean = nil
 
 describe OnlyofficeDigitaloceanWrapper::DigitalOceanWrapper, retry: 1 do
   before :all do
-    digital_ocean = OnlyofficeDigitaloceanWrapper::DigitalOceanWrapper.new
+    digital_ocean = described_class.new
   end
 
   describe 'Restore image by name' do
