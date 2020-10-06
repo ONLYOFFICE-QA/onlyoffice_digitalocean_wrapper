@@ -7,6 +7,7 @@
 * Add support of `markdownlint` in CI
 * Add `rubocop` check in CI
 * Add support of `rubocop-performance`, `rubocop-rake` and `rubocop-rspec`
+* Add task to CI to check that 100% code documented
 
 ### Changes
 
@@ -14,6 +15,7 @@
 * Freeze specific `rubocop` version in gemspec
 * Actualize rubocop todo to `0.92.0` and fix some issues
 * Drop support of ruby <= 2.4 since they're EOLed
+* Add missing documentation
 
 ## 0.4.1 (2020-10-05)
 

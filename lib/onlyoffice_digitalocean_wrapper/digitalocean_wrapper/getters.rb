@@ -22,6 +22,9 @@ module OnlyofficeDigitaloceanWrapper
       end
     end
 
+    # Return droplet id by it's name
+    # @param droplet_name [String] name of droplet
+    # @return [Integer] id of droplet
     def get_droplet_id_by_name(droplet_name)
       droplet = droplet_by_name(droplet_name)
       if droplet.nil?
@@ -33,6 +36,9 @@ module OnlyofficeDigitaloceanWrapper
       end
     end
 
+    # Return droplet ip by it's name
+    # @param droplet_name [String] name of droplet
+    # @return [String] ip of droplet
     def get_droplet_ip_by_name(droplet_name)
       droplet = droplet_by_name(droplet_name)
       if droplet.nil?
@@ -46,6 +52,9 @@ module OnlyofficeDigitaloceanWrapper
       end
     end
 
+    # Return droplet status by it's name
+    # @param droplet_name [String] name of droplet
+    # @return [Symbol] droplet status
     def get_droplet_status_by_name(droplet_name)
       droplet = droplet_by_name(droplet_name)
       if droplet.nil?
