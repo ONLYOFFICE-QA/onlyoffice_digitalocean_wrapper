@@ -7,7 +7,9 @@ incorrect_droplet_size = '128gb'
 digital_ocean = nil
 
 describe OnlyofficeDigitaloceanWrapper::DigitalOceanWrapper, retry: 1 do
-  let(:digital_ocean) { described_class.new }
+  before :all do
+    digital_ocean = described_class.new
+  end
 
   describe 'Restore image by name' do
     it 'restore_image_by_name with incorrect size' do
