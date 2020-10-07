@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.email = %w[shockwavenn@gmail.com nazarov90@gmail.com]
   s.summary = 'Wrapper gem for DigitalOcean'
   s.description = 'Wrapper gem for DigitalOcean. Use in testing projects'
-  s.homepage = "https://github.com/onlyoffice-testing-robot/#{s.name}"
+  s.homepage = "https://github.com/ONLYOFFICE-QA/#{s.name}"
   s.metadata = {
     'bug_tracker_uri' => "#{s.homepage}/issues",
     'changelog_uri' => "#{s.homepage}/blob/master/CHANGELOG.md",
