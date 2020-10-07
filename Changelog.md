@@ -17,6 +17,7 @@
 * Actualize rubocop todo to `0.92.0` and fix some issues
 * Drop support of ruby <= 2.4 since they're EOLed
 * Add missing documentation
+* Move repo to `ONLYOFFICE-QA` organization
 
 ## 0.4.1 (2020-10-05)
 
