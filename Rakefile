@@ -12,6 +12,7 @@ task :release_github_rubygems do
   Rake::Task['release'].invoke
   gem_name = "pkg/#{OnlyofficeDigitaloceanWrapper::NAME}-"\
               "#{OnlyofficeDigitaloceanWrapper::VERSION}.gem"
-  `gem push --key github \
-   --host https://rubygems.pkg.github.com/ONLYOFFICE-QA #{gem_name}`
+  sh('gem push --key github '\
+   '--host https://rubygems.pkg.github.com/ONLYOFFICE-QA '\
+   "#{gem_name}")
 end
