@@ -107,10 +107,10 @@ DEPENDENCIES
   rake (~> 13.0)
   rspec
   rubocop
-  rubocop-performance (= 1.8.1)
-  rubocop-rake (= 0.5.1)
-  rubocop-rspec (= 1.43.2)
-  yard (= 0.9.25)
+  rubocop-performance (~> 1)
+  rubocop-rake (~> 0)
+  rubocop-rspec (~> 1)
+  yard (~> 0)
 
 BUNDLED WITH
    2.1.4
