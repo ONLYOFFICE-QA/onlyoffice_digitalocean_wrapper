@@ -9,6 +9,7 @@
 * Add support of `rubocop-performance`, `rubocop-rake` and `rubocop-rspec`
 * Add task to CI to check that 100% code documented
 * Add params to `#read_token` method
+* Add dependabot config
 
 ### Changes
 
