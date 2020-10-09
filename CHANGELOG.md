@@ -19,6 +19,7 @@
 * Add missing documentation
 * Move repo to `ONLYOFFICE-QA` organization
 * Fix `rake` command for releasing gem on RubyGems
+* Fix `CHANGELOG.md` file name case
 
 ## 0.4.1 (2020-10-05)
 
