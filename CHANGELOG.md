@@ -20,6 +20,7 @@
 * Move repo to `ONLYOFFICE-QA` organization
 * Fix `rake` command for releasing gem on RubyGems
 * Fix `CHANGELOG.md` file name case
+* Freeze dependencies via adding Gemfile.lock to VCS
 
 ## 0.4.1 (2020-10-05)
 
