@@ -55,7 +55,7 @@ describe OnlyofficeDigitaloceanWrapper::DigitalOceanWrapper, retry: 1 do
       expect do
         digital_ocean.wait_until_droplet_have_status(droplet_name, 'destroyed', timeout: 10)
       end.to raise_error(OnlyofficeDigitaloceanWrapper::DropletOperationTimeout,
-                         "#{droplet-name} was not destroyed for 10s")
+                         "#{droplet_name} was not destroyed for 10s")
     end
 
     it 'reboot_droplet' do
