@@ -9,3 +9,4 @@ if ENV['CI'] == 'true'
   SimpleCov.formatter = SimpleCov::Formatter::Codecov
 end
 require 'onlyoffice_digitalocean_wrapper'
+require 'securerandom'

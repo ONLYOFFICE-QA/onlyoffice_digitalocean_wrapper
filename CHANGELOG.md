@@ -24,6 +24,7 @@
 * Freeze dependencies via adding Gemfile.lock to VCS
 * Do no freeze specific version in `gemspec`
 * Move all dependencies to `gemspec`
+* Unique droplet name in tests. Allow parallel run
 
 ## 0.4.1 (2020-10-05)
 

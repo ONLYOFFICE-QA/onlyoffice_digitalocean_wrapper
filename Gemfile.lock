@@ -101,16 +101,16 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  codecov
+  codecov (~> 0)
   onlyoffice_digitalocean_wrapper!
-  overcommit
+  overcommit (~> 0)
   rake (~> 13.0)
-  rspec
-  rubocop
+  rspec (~> 3)
+  rubocop (>= 0.49.0)
   rubocop-performance (~> 1)
   rubocop-rake (~> 0)
   rubocop-rspec (~> 1)
-  yard (~> 0)
+  yard (>= 0.9.20)
 
 BUNDLED WITH
    2.1.4
