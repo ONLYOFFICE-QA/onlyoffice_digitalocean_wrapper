@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    onlyoffice_digitalocean_wrapper (0.4.1)
+    onlyoffice_digitalocean_wrapper (0.5.0)
       droplet_kit (~> 3)
       onlyoffice_logger_helper (~> 1)
 
