@@ -2,6 +2,8 @@
 
 ## unreleased (master)
 
+## 0.5.0 (2020-10-13)
+
 ### New Features
 
 * Add support of `markdownlint` in CI
