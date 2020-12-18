@@ -7,7 +7,7 @@ incorrect_droplet_size = '128gb'
 digital_ocean = nil
 droplet_name = "wrapper-test-#{SecureRandom.uuid}"
 
-describe OnlyofficeDigitaloceanWrapper::DigitalOceanWrapper, retry: 1 do
+describe OnlyofficeDigitaloceanWrapper::DigitalOceanWrapper, '#restore_and_operations', retry: 1 do
   before :all do
     digital_ocean = described_class.new
   end
