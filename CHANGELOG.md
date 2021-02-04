@@ -2,6 +2,10 @@
 
 ## unreleased (master)
 
+### Changes
+
+* Replace usage of `onlyoffice_logger_helper` with default logger
+
 ## 0.5.0 (2020-10-13)
 
 ### New Features
