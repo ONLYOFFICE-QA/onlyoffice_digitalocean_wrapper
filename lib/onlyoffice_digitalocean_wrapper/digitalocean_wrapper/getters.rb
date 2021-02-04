@@ -8,7 +8,7 @@ module OnlyofficeDigitaloceanWrapper
       image = all_droplets.find { |x| x.name == image_name }
       raise DigitalOceanImageNotFound, image_name if image.nil?
 
-      OnlyofficeLoggerHelper.log("get_image_id_by_name(#{image_name}): #{image.id}")
+      logger.info("get_image_id_by_name(#{image_name}): #{image.id}")
       image.id
     end
 
@@ -28,10 +28,10 @@ module OnlyofficeDigitaloceanWrapper
     def get_droplet_id_by_name(droplet_name)
       droplet = droplet_by_name(droplet_name)
       if droplet.nil?
-        OnlyofficeLoggerHelper.log("get_droplet_id_by_name(#{droplet_name}): not found any droplets")
+        logger.info("get_droplet_id_by_name(#{droplet_name}): not found any droplets")
         nil
       else
-        OnlyofficeLoggerHelper.log("get_droplet_id_by_name(#{droplet_name}): #{droplet.id}")
+        logger.info("get_droplet_id_by_name(#{droplet_name}): #{droplet.id}")
         droplet.id
       end
     end
@@ -42,12 +42,12 @@ module OnlyofficeDigitaloceanWrapper
     def get_droplet_ip_by_name(droplet_name)
       droplet = droplet_by_name(droplet_name)
       if droplet.nil?
-        OnlyofficeLoggerHelper.log("There is no created droplet with name: #{droplet_name}")
+        logger.info("There is no created droplet with name: #{droplet_name}")
         return
       end
       retry_exception do
         ip = public_ip(droplet)
-        OnlyofficeLoggerHelper.log("get_droplet_ip_by_name(#{droplet_name}): #{ip}")
+        logger.info("get_droplet_ip_by_name(#{droplet_name}): #{ip}")
         ip
       end
     end
@@ -58,13 +58,13 @@ module OnlyofficeDigitaloceanWrapper
     def get_droplet_status_by_name(droplet_name)
       droplet = droplet_by_name(droplet_name)
       if droplet.nil?
-        OnlyofficeLoggerHelper.log("get_droplet_status_by_name(#{droplet_name}): not found any droplets")
+        logger.info("get_droplet_status_by_name(#{droplet_name}): not found any droplets")
         nil
       else
         retry_exception do
           status = droplet.status
           status = :locked if droplet.locked
-          OnlyofficeLoggerHelper.log("get_droplet_status_by_name(#{droplet_name}): #{status}")
+          logger.info("get_droplet_status_by_name(#{droplet_name}): #{status}")
           status
         end
       end

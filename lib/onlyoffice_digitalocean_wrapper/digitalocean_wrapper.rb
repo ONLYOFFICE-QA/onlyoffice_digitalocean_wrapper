@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 require 'droplet_kit'
-require 'onlyoffice_logger_helper'
 require_relative 'digitalocean_wrapper/digitalocean_exceptions'
 require_relative 'digitalocean_wrapper/exceptions_retryer'
 require_relative 'digitalocean_wrapper/getters'
+require_relative 'digitalocean_wrapper/logger_wrapper'
 require_relative 'digitalocean_wrapper/power_actions'
 require_relative 'digitalocean_wrapper/token_methods'
 
@@ -13,6 +13,7 @@ module OnlyofficeDigitaloceanWrapper
   # Class for wrapping DigitalOcean API gem
   class DigitalOceanWrapper
     include Getters
+    include LoggerWrapper
     include ExceptionsRetryer
     include PowerActions
     include TokenMethods
@@ -38,8 +39,8 @@ module OnlyofficeDigitaloceanWrapper
       while get_droplet_status_by_name(droplet_name) != status && counter < timeout
         counter += 10
         sleep 10
-        OnlyofficeLoggerHelper.log("waiting for droplet (#{droplet_name}) to have "\
-                                   "status: #{status} for #{counter} seconds of #{timeout}")
+        logger.info("waiting for droplet (#{droplet_name}) to have "\
+                    "status: #{status} for #{counter} seconds of #{timeout}")
       end
       raise DropletOperationTimeout, "#{droplet_name} was not #{status} for #{timeout}s" if counter >= timeout
 
@@ -70,7 +71,7 @@ module OnlyofficeDigitaloceanWrapper
                                         monitoring: true,
                                         size: size)
       created = @client.droplets.create(droplet)
-      OnlyofficeLoggerHelper.log("restore_image_by_name(#{image_name}, #{droplet_name})")
+      logger.info("restore_image_by_name(#{image_name}, #{droplet_name})")
       if created.is_a?(String)
         raise "Problem, while creating '#{droplet_name}' from image '#{image_name}'\n" \
               "Error: #{created}"
@@ -84,7 +85,7 @@ module OnlyofficeDigitaloceanWrapper
     def destroy_droplet_by_name(droplet_name = 'nct-at1')
       droplet_id = get_droplet_id_by_name(droplet_name)
       client.droplets.delete(id: droplet_id)
-      OnlyofficeLoggerHelper.log("destroy_droplet_by_name(#{droplet_name})")
+      logger.info("destroy_droplet_by_name(#{droplet_name})")
       wait_until_droplet_have_status(droplet_name, nil)
     end
   end

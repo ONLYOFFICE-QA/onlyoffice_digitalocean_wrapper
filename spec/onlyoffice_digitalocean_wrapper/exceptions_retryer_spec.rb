@@ -4,6 +4,7 @@ require 'spec_helper'
 
 describe OnlyofficeDigitaloceanWrapper::ExceptionsRetryer do
   include described_class
+  include OnlyofficeDigitaloceanWrapper::LoggerWrapper
 
   it 'exception retryer retry exact specified times' do
     retries = 0
@@ -13,7 +14,7 @@ describe OnlyofficeDigitaloceanWrapper::ExceptionsRetryer do
         raise DropletKit::Error
       end
     rescue DropletKit::Error
-      p('handle exception')
+      logger.info('exception handled')
     end
     expect(retries).to eq(2)
   end
