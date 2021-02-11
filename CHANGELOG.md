@@ -2,6 +2,10 @@
 
 ## unreleased (master)
 
+### New Features
+
+* Add `ruby-3.0` and `ruby-head` in CI
+
 ### Changes
 
 * Replace usage of `onlyoffice_logger_helper` with default logger
