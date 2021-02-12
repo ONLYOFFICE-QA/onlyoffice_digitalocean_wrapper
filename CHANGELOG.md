@@ -2,6 +2,14 @@
 
 ## unreleased (master)
 
+### Changes
+
+* Remove `ruby-head` from test matrix
+
+### Fixes
+
+* Fix incorrect setting ruby version in build matrix
+
 ## 0.6.0 (2021-02-11)
 
 ### New Features
