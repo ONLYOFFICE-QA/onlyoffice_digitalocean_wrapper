@@ -16,7 +16,7 @@ module OnlyofficeDigitaloceanWrapper
       rescue exception => e
         try += 1
         logger.error("Error '#{exception}, #{e}' happened during "\
-                                   "operation. Retrying #{try} of #{retries}")
+                     "operation. Retrying #{try} of #{retries}")
         sleep timeout # Time to cooldown error
         try <= retries ? retry : raise
       end
