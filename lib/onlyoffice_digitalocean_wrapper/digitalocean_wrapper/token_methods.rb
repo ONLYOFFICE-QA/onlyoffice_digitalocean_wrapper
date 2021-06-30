@@ -25,7 +25,7 @@ module OnlyofficeDigitaloceanWrapper
       File.read(token_file_path).delete("\n")
     rescue Errno::ENOENT
       raise Errno::ENOENT, "No access token found in #{token_file_path}. " \
-      "Please create file #{token_file_path} with token"
+                           "Please create file #{token_file_path} with token"
     end
   end
 end
