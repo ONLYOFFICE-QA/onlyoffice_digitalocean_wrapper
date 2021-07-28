@@ -22,6 +22,30 @@ module OnlyofficeDigitaloceanWrapper
       end
     end
 
+    # Get project by name
+    # @param [String] project_name
+    # @return [DropletKit::Project] object representing a project
+    def project_by_name(project_name)
+      retry_exception do
+        projects = @client.projects.all
+        projects.find { |x| x.name == project_name }
+      end
+    end
+
+    # Get project id by name
+    # @param [String] project_name
+    # @return [String] id of current project
+    def get_project_id_by_name(project_name)
+      project = project_by_name(project_name)
+      if project.nil?
+        logger.info("get_project_id_by_name(#{project_name}): not found any projects")
+        nil
+      else
+        logger.info("get_project_id_by_name(#{project_name}): #{project.id}")
+        project.id
+      end
+    end
+
     # Return droplet id by it's name
     # @param droplet_name [String] name of droplet
     # @return [Integer] id of droplet
