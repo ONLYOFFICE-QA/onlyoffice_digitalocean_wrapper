@@ -34,7 +34,7 @@ module OnlyofficeDigitaloceanWrapper
 
     # Get project id by name
     # @param [String] project_name
-    # @return [String] id of current project
+    # @return [nil, String] id of current project or nil is no project found
     def get_project_id_by_name(project_name)
       project = project_by_name(project_name)
       if project.nil?
@@ -48,7 +48,7 @@ module OnlyofficeDigitaloceanWrapper
 
     # Return droplet id by it's name
     # @param droplet_name [String] name of droplet
-    # @return [Integer] id of droplet
+    # @return [nil, Integer] id of droplet or nil is no one droplet found
     def get_droplet_id_by_name(droplet_name)
       droplet = droplet_by_name(droplet_name)
       if droplet.nil?
