@@ -4,6 +4,7 @@
 
 ### Changes
 
+* New methods `project_by_name` and `get_project_id_by_name` to work with projects
 * Remove `ruby-head` from test matrix
 
 ### Fixes
