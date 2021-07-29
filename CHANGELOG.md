@@ -2,6 +2,8 @@
 
 ## unreleased (master)
 
+## 0.7.0 (2021-07-29)
+
 ### Changes
 
 * New methods `project_by_name` and `get_project_id_by_name` to work with projects
