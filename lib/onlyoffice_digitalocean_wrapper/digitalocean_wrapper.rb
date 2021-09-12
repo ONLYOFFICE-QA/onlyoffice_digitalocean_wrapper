@@ -6,7 +6,6 @@ require_relative 'digitalocean_wrapper/exceptions_retryer'
 require_relative 'digitalocean_wrapper/getters'
 require_relative 'digitalocean_wrapper/logger_wrapper'
 require_relative 'digitalocean_wrapper/power_actions'
-require_relative 'digitalocean_wrapper/ssh_helper'
 require_relative 'digitalocean_wrapper/token_methods'
 
 # Namespace for this gem
@@ -17,7 +16,6 @@ module OnlyofficeDigitaloceanWrapper
     include LoggerWrapper
     include ExceptionsRetryer
     include PowerActions
-    include SshHelper
     include TokenMethods
 
     # @return [Array<String>] list of allowed droplet sizes
