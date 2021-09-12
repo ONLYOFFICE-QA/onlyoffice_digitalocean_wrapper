@@ -22,6 +22,7 @@ Gem::Specification.new do |s|
   s.files = Dir['lib/**/*']
   s.license = 'AGPL-3.0'
   s.add_runtime_dependency('droplet_kit', '~> 3')
+  s.add_runtime_dependency('net-telnet', '~> 0')
   s.add_development_dependency('codecov', '~> 0')
   s.add_development_dependency('overcommit', '~> 0')
   s.add_development_dependency('rake', '~> 13.0')

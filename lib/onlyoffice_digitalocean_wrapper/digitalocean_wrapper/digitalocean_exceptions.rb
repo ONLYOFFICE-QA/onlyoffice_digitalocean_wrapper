@@ -12,4 +12,8 @@ module OnlyofficeDigitaloceanWrapper
   # Class raised if droplet opertaion is timeout
   class DropletOperationTimeout < StandardError
   end
+
+  # Class raised if droplet ssh is not up for defined timeout
+  class DropletSshUpTimeout < StandardError
+  end
 end

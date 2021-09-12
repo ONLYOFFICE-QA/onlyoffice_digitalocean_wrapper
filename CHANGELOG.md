@@ -2,6 +2,10 @@
 
 ## unreleased (master)
 
+### New features
+
+* `DigitalOceanWrapper#ssh_up?` and `DigitalOceanWrapper#wait_until_ssh_up` methods
+
 ## 0.7.0 (2021-07-29)
 
 ### Changes
