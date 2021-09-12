@@ -23,7 +23,10 @@ module OnlyofficeDigitaloceanWrapper
       wait_between_tries = 5
       tries = timeout / wait_between_tries
       tries.times do |try|
-        return true if ssh_up?
+        if ssh_up?
+          logger.info("SSH on `#{@ip}` is up. Waiting finished")
+          return true
+        end
 
         logger.info("SSH on `#{@ip}` is not up. Waited for #{try * wait_between_tries} seconds of #{timeout}")
         sleep wait_between_tries
