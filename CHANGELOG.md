@@ -2,6 +2,8 @@
 
 ## unreleased (master)
 
+## 0.8.0 (2021-09-12)
+
 ### New features
 
 * `SshChecker#ssh_up?` and `SshChecker#wait_until_ssh_up` methods
