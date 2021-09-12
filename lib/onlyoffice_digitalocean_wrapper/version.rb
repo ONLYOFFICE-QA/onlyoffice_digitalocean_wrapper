@@ -2,7 +2,7 @@
 
 module OnlyofficeDigitaloceanWrapper
   # @return [String] version of gem
-  VERSION = '0.7.0'
+  VERSION = '0.8.0'
   # @return [String] name of gem
   NAME = 'onlyoffice_digitalocean_wrapper'
 end
