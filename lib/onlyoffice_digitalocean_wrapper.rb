@@ -1,4 +1,5 @@
 # frozen_string_literal: true
 
 require_relative 'onlyoffice_digitalocean_wrapper/digitalocean_wrapper'
+require_relative 'onlyoffice_digitalocean_wrapper/ssh_checker'
 require_relative 'onlyoffice_digitalocean_wrapper/version'
