@@ -5,6 +5,7 @@
 ### Changes
 
 * Use new uploader for `codecov` instead of deprecated one
+* Require `mfa` for releasing gem
 
 ## 0.8.0 (2021-09-12)
 
