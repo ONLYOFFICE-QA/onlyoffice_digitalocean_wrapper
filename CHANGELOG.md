@@ -2,10 +2,15 @@
 
 ## unreleased (master)
 
+### New Features
+
+* Add `ruby-3.1` to CI
+
 ### Changes
 
 * Use new uploader for `codecov` instead of deprecated one
 * Require `mfa` for releasing gem
+* Do not allow parallel run in CI
 
 ## 0.8.0 (2021-09-12)
 
