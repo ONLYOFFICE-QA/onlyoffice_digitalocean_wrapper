@@ -6,7 +6,7 @@
 
 * Add `ruby-3.1` to CI
 
-### Fixes 
+### Fixes
 
 * Fix `markdownlint` failure because of old `nodejs` in CI
 
