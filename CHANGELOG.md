@@ -6,6 +6,10 @@
 
 * Add `ruby-3.1` to CI
 
+### Fixes 
+
+* Fix `markdownlint` failure because of old `nodejs` in CI
+
 ### Changes
 
 * Use new uploader for `codecov` instead of deprecated one
