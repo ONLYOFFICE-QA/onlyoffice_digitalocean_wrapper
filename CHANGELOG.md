@@ -5,6 +5,7 @@
 ### New Features
 
 * Add `ruby-3.1` to CI
+* Add `yamllint` check in CI
 
 ### Fixes
 

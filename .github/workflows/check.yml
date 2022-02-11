@@ -5,32 +5,25 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        ruby: [ '2.7', '3.0', '3.1' ]
-      max-parallel: 1  
+        ruby: ['2.7', '3.0', '3.1']
+      max-parallel: 1
     steps:
-    - uses: actions/checkout@v2
-    - name: Set up Ruby 2.7
-      uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: ${{ matrix.ruby }}
-    - name: Build and test with Rake
-      env:
-        DO_ACCESS_TOKEN: ${{ secrets.DO_ACCESS_TOKEN }}
-      run: |
-        gem install bundler
-        bundle install --jobs 4 --retry 3
-        bundle exec rspec --fail-fast
-    - uses: actions/setup-node@v1
-      with:
-        node-version: '16'
-    - name: Check markdown files using `markdownlint`
-      run: |
-        npm install -g markdownlint-cli
-        markdownlint *.md
-    - name: Check source files using `rubocop`
-      run: rubocop
-    - name: Check that code 100% documented
-      run: yardoc . | grep -q '100.00% documented'
-    - uses: codecov/codecov-action@v2
-      with:
-        fail_ci_if_error: true
+      - uses: actions/checkout@v2
+      - name: Set up Ruby 2.7
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+      - name: Build and test with Rake
+        env:
+          DO_ACCESS_TOKEN: ${{ secrets.DO_ACCESS_TOKEN }}
+        run: |
+          gem install bundler
+          bundle install --jobs 4 --retry 3
+          bundle exec rspec --fail-fast
+      - name: Check source files using `rubocop`
+        run: rubocop
+      - name: Check that code 100% documented
+        run: yardoc . | grep -q '100.00% documented'
+      - uses: codecov/codecov-action@v2
+        with:
+          fail_ci_if_error: true
