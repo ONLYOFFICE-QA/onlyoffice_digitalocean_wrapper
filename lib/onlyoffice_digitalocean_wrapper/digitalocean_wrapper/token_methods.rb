@@ -20,7 +20,9 @@ module OnlyofficeDigitaloceanWrapper
     # @return [String] token
     def read_token(token_file_path: "#{Dir.home}/.do/access_token",
                    force_file_read: false)
-      return ENV['DO_ACCESS_TOKEN'] if ENV['DO_ACCESS_TOKEN'] && !force_file_read
+      # rubocop:disable Style/FetchEnvVar
+      return ENV['DO_ACCESS_TOKEN'] if ENV.key?('DO_ACCESS_TOKEN') && !force_file_read
+      # rubocop:enable Style/FetchEnvVar
 
       File.read(token_file_path).delete("\n")
     rescue Errno::ENOENT

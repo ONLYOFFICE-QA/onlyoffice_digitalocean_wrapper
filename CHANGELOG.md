@@ -17,6 +17,7 @@
 * Require `mfa` for releasing gem
 * Do not allow parallel run in CI
 * Check `dependabot` at 8:00 Moscow time daily
+* Fix `rubocop-1.28.1` code issues
 
 ## 0.8.0 (2021-09-12)
 
