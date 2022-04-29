@@ -56,7 +56,7 @@ GEM
     kartograph (0.2.8)
     multipart-post (2.1.1)
     net-telnet (0.2.0)
-    overcommit (0.58.0)
+    overcommit (0.59.0)
       childprocess (>= 0.6.3, < 5)
       iniparse (~> 1.4)
       rexml (~> 3.2)
