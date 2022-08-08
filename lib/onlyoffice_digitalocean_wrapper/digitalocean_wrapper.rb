@@ -39,7 +39,7 @@ module OnlyofficeDigitaloceanWrapper
       while get_droplet_status_by_name(droplet_name) != status && counter < timeout
         counter += 10
         sleep 10
-        logger.info("waiting for droplet (#{droplet_name}) to have "\
+        logger.info("waiting for droplet (#{droplet_name}) to have " \
                     "status: #{status} for #{counter} seconds of #{timeout}")
       end
       raise DropletOperationTimeout, "#{droplet_name} was not #{status} for #{timeout}s" if counter >= timeout
