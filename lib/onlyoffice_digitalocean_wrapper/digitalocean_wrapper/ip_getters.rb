@@ -6,7 +6,7 @@ module OnlyofficeDigitaloceanWrapper
     # Get ip of droplet
     # @param [DropletKit] droplet to get ip
     # @param [String] network_type to get ip
-    # @return [String] public ip
+    # @return [String, nil] ip of droplet or `nil` if there is no such network
     def droplet_ip(droplet, network_type = 'public')
       networks = droplet.networks.to_a.first
       specific_network = networks.find { |net| net.type == network_type }
@@ -17,7 +17,7 @@ module OnlyofficeDigitaloceanWrapper
 
     # Get public ip of droplet
     # @param [DropletKit] droplet to get ip
-    # @return [String] public ip
+    # @return [String, nil] public ip or `nil` if there is no such network
     def public_ip(droplet)
       droplet_ip(droplet, 'public')
     end
