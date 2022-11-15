@@ -4,6 +4,7 @@ require 'droplet_kit'
 require_relative 'digitalocean_wrapper/digitalocean_exceptions'
 require_relative 'digitalocean_wrapper/exceptions_retryer'
 require_relative 'digitalocean_wrapper/getters'
+require_relative 'digitalocean_wrapper/ip_getters'
 require_relative 'digitalocean_wrapper/logger_wrapper'
 require_relative 'digitalocean_wrapper/power_actions'
 require_relative 'digitalocean_wrapper/token_methods'
@@ -13,6 +14,7 @@ module OnlyofficeDigitaloceanWrapper
   # Class for wrapping DigitalOcean API gem
   class DigitalOceanWrapper
     include Getters
+    include IpGetters
     include LoggerWrapper
     include ExceptionsRetryer
     include PowerActions

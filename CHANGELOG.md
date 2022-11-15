@@ -6,10 +6,12 @@
 
 * Add `ruby-3.1` to CI
 * Add `yamllint` check in CI
+* Add `droplet_ip` method to get `public`/`private` IP of droplet
 
 ### Fixes
 
 * Fix `markdownlint` failure because of old `nodejs` in CI
+* Fix `public_ip` method crash if there is no IP
 
 ### Changes
 
