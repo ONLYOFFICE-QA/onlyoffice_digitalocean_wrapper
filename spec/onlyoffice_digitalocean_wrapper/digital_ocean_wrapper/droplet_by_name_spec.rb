@@ -3,8 +3,7 @@
 require 'spec_helper'
 
 describe OnlyofficeDigitaloceanWrapper::DigitalOceanWrapper, '#droplet_by_name' do
-  existing_droplet = 'bugzilla.onlyoffice.com'
-  nonexisting_droplet = 'not bugzilla'
+  nonexisting_droplet = 'fake droplet name'
   let(:digital_ocean) { described_class.new }
 
   it 'get_droplet_by_name with existing name' do
@@ -24,7 +23,7 @@ describe OnlyofficeDigitaloceanWrapper::DigitalOceanWrapper, '#droplet_by_name' 
   end
 
   it 'get_droplet_ip_by_name' do
-    expect(digital_ocean.get_droplet_ip_by_name(existing_droplet)).to eq('104.131.2.120')
+    expect(digital_ocean.get_droplet_ip_by_name(existing_droplet)).to eq(existing_droplet_ip)
   end
 
   it 'get_droplet_ip_by_name non existing name' do

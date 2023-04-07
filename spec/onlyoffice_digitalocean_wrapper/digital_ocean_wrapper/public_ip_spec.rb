@@ -4,7 +4,6 @@ require 'resolv'
 require 'spec_helper'
 
 describe OnlyofficeDigitaloceanWrapper::DigitalOceanWrapper, '#public_ip' do
-  existing_droplet = 'bugzilla.onlyoffice.com'
   let(:digital_ocean) { described_class.new }
 
   it 'public_ip for existing droplet returns an IP' do
