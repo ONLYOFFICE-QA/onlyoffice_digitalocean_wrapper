@@ -13,6 +13,7 @@
 
 * Fix `markdownlint` failure because of old `nodejs` in CI
 * Fix `public_ip` method crash if there is no IP
+* Fix test suite by replacing existing droplet name
 
 ### Changes
 
