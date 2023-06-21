@@ -27,7 +27,7 @@ GEM
       kartograph (~> 0.2.8)
       resource_kit (~> 0.1.5)
       virtus (>= 1.0.3, <= 3)
-    faraday (2.7.5)
+    faraday (2.7.7)
       faraday-net_http (>= 2.0, < 3.1)
       ruby2_keywords (>= 0.0.4)
     faraday-net_http (3.0.2)
