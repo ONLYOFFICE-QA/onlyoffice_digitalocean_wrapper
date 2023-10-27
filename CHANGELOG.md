@@ -22,8 +22,7 @@
 * Do not allow parallel run in CI
 * Check `dependabot` at 8:00 Moscow time daily
 * Fix `rubocop-1.28.1` code issues
-* Drop `ruby-2.6` support, since it's EOL'ed
-* Remove `ruby-2.7` from CI. It's supported but not checked. EOL is soon
+* Drop `ruby-2.6`, `ruby-2.7` support, since it's EOL'ed
 
 ## 0.8.0 (2021-09-12)
 
