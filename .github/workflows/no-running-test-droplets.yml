@@ -10,10 +10,10 @@ jobs:
         with:
           ruby-version: ruby
       - name: Build and test with Rake
-        env:
-          DO_ACCESS_TOKEN: ${{ secrets.DO_ACCESS_TOKEN }}
         run: |
           gem install bundler
           bundle install --jobs 4 --retry 3
       - name: Check that there is no running test droplets
+        env:
+          DO_ACCESS_TOKEN: ${{ secrets.DO_ACCESS_TOKEN }}
         run: bundle exec rake check_no_test_droplet
