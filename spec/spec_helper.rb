@@ -22,3 +22,9 @@ end
 def existing_droplet_ip
   '138.197.104.24'
 end
+
+# Prefix for test droplet name
+# @return [String]
+def test_droplet_name_prefix
+  'wrapper-test-'
+end

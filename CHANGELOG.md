@@ -8,6 +8,7 @@
 * Add `ruby-3.2` to CI
 * Add `yamllint` check in CI
 * Add `droplet_ip` method to get `public`/`private` IP of droplet
+* Add CI task to check that there is no running test droplets
 
 ### Fixes
 

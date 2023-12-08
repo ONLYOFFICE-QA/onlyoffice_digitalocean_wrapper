@@ -5,7 +5,7 @@ require 'spec_helper'
 existing_image_name = 'nct-at-docker'
 incorrect_droplet_size = '128gb'
 digital_ocean = nil
-droplet_name = "wrapper-test-#{SecureRandom.uuid}"
+droplet_name = "#{test_droplet_name_prefix}#{SecureRandom.uuid}"
 
 describe OnlyofficeDigitaloceanWrapper::DigitalOceanWrapper, '#restore_and_operations', retry: 1 do
   before :all do

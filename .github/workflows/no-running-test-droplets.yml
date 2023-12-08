@@ -1,0 +1,21 @@
+name: no-running-test-droplets
+on:
+  schedule:
+    - cron: '0 3 * * *'
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up latest Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ruby
+      - name: Build and test with Rake
+        run: |
+          gem install bundler
+          bundle install --jobs 4 --retry 3
+      - name: Check that there is no running test droplets
+        env:
+          DO_ACCESS_TOKEN: ${{ secrets.DO_ACCESS_TOKEN }}
+        run: bundle exec rake check_no_test_droplet
