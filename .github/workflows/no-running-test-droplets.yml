@@ -1,4 +1,4 @@
-name: check
+name: no-running-test-droplets
 on: [push]
 jobs:
   check:
