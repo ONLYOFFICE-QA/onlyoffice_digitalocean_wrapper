@@ -15,6 +15,5 @@ jobs:
         run: |
           gem install bundler
           bundle install --jobs 4 --retry 3
-          bundle exec rspec --fail-fast
       - name: Check that there is no running test droplets
         run: bundle exec rake check_no_test_droplet
