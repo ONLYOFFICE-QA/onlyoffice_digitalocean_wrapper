@@ -26,6 +26,7 @@
 * Fix `rubocop-1.28.1` code issues
 * Drop `ruby-2.6`, `ruby-2.7` support, since it's EOL'ed
 * Remove `ruby-3.0` and `ruby-3.1` from CI to speed up CI
+* Run `codecov` in CI only on latest ruby
 
 ## 0.8.0 (2021-09-12)
 
