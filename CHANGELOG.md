@@ -4,8 +4,9 @@
 
 ### New Features
 
-* Add `ruby-3.1` to CI
 * Add `ruby-3.2` to CI
+* Add `ruby-3.3` to CI
+* Add `ruby-head` to CI
 * Add `yamllint` check in CI
 * Add `droplet_ip` method to get `public`/`private` IP of droplet
 * Add CI task to check that there is no running test droplets
@@ -24,6 +25,8 @@
 * Check `dependabot` at 8:00 Moscow time daily
 * Fix `rubocop-1.28.1` code issues
 * Drop `ruby-2.6`, `ruby-2.7` support, since it's EOL'ed
+* Remove `ruby-3.0` and `ruby-3.1` from CI to speed up CI
+* Run `codecov` in CI only on latest ruby
 
 ## 0.8.0 (2021-09-12)
 
