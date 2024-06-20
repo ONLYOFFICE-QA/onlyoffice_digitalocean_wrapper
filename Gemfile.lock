@@ -30,7 +30,7 @@ GEM
       kartograph (~> 0.2.8)
       resource_kit (~> 0.1.5)
       virtus (>= 1.0.3, <= 3)
-    faraday (2.9.1)
+    faraday (2.9.2)
       faraday-net_http (>= 2.0, < 3.2)
     faraday-net_http (3.1.0)
       net-http
