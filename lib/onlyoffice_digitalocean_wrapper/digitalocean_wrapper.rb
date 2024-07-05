@@ -40,6 +40,7 @@ module OnlyofficeDigitaloceanWrapper
     def wait_until_droplet_have_status(droplet_name, status = 'active', params = {})
       timeout = params.fetch(:timeout, 300)
       interval = params.fetch(:interval, 10)
+      counter = 0
       while get_droplet_status_by_name(droplet_name) != status && counter < timeout
         counter += interval
         sleep(interval)
