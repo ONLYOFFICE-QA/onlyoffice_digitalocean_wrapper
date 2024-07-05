@@ -11,6 +11,7 @@
 * Add `droplet_ip` method to get `public`/`private` IP of droplet
 * Add CI task to check that there is no running test droplets
 * Add `dependabot` check for `GitHub Actions`
+* Add `wait_until_droplet_have_status` option `interval` to specify interval between checks
 
 ### Fixes
 

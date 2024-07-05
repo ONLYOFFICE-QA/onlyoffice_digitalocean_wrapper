@@ -33,14 +33,16 @@ module OnlyofficeDigitaloceanWrapper
     # Wait until droplet has status
     # @param droplet_name [String] name of droplet
     # @param status [String] status to wait
-    # @param params [Hash] additiona params
+    # @param params [Hash] additional params
+    # @option params [Integer] :timeout (300) maximum time to wait in seconds
+    # @option params [Integer] :interval (10) interval time between status checks in seconds
     # @return [Symbol] droplet status after wait over
     def wait_until_droplet_have_status(droplet_name, status = 'active', params = {})
       timeout = params.fetch(:timeout, 300)
-      counter = 0
+      interval = params.fetch(:interval, 10)
       while get_droplet_status_by_name(droplet_name) != status && counter < timeout
-        counter += 10
-        sleep 10
+        counter += interval
+        sleep(interval)
         logger.info("waiting for droplet (#{droplet_name}) to have " \
                     "status: #{status} for #{counter} seconds of #{timeout}")
       end
