@@ -2,6 +2,8 @@
 
 ## unreleased (master)
 
+## 0.9.0 (2024-07-05)
+
 ### New Features
 
 * Add `ruby-3.2` to CI
