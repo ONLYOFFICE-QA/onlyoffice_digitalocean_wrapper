@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    onlyoffice_digitalocean_wrapper (0.8.0)
+    onlyoffice_digitalocean_wrapper (0.9.0)
       droplet_kit (~> 3)
       net-telnet (~> 0)
 
