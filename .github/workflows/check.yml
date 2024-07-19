@@ -13,6 +13,11 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby }}
+      # Until https://github.com/actions/runner-images/issues/10215
+      # is resolved
+      - name: Fix issue with ruby permissions
+        run: |
+          chmod -R o-w /opt/hostedtoolcache/Ruby
       - name: Build and test with Rake
         env:
           DO_ACCESS_TOKEN: ${{ secrets.DO_ACCESS_TOKEN }}

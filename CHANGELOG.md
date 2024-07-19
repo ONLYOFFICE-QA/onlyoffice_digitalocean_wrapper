@@ -2,6 +2,10 @@
 
 ## unreleased (master)
 
+### Changes
+
+* [CI] Workaround for issue with upgrading bundler
+
 ## 0.9.0 (2024-07-05)
 
 ### New Features
