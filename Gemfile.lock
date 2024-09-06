@@ -115,7 +115,7 @@ GEM
       axiom-types (~> 0.1)
       coercible (~> 1.0)
       descendants_tracker (~> 0.0, >= 0.0.3)
-    yard (0.9.36)
+    yard (0.9.37)
 
 PLATFORMS
   ruby
