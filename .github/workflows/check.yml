@@ -31,7 +31,7 @@ jobs:
         run: yardoc . | grep -q '100.00% documented'
       - name: Run codecov on latest ruby
         if: matrix.ruby == '3.3'
-        uses: codecov/codecov-action@v4
+        uses: codecov/codecov-action@v5
         with:
           fail_ci_if_error: true
         env:
