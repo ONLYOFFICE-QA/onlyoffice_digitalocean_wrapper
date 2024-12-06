@@ -45,7 +45,7 @@ GEM
     kartograph (0.2.8)
     language_server-protocol (3.17.0.3)
     logger (1.6.2)
-    net-http (0.5.0)
+    net-http (0.6.0)
       uri
     net-telnet (0.2.0)
     overcommit (0.64.1)
