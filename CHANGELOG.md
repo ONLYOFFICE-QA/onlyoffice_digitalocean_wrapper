@@ -2,6 +2,10 @@
 
 ## unreleased (master)
 
+### New Features
+
+* Add `ruby-3.4` to CI
+
 ### Changes
 
 * [CI] Workaround for issue with upgrading bundler
