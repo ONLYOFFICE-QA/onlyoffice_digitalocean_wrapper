@@ -24,4 +24,6 @@ Gem::Specification.new do |s|
   s.license = 'AGPL-3.0'
   s.add_dependency('droplet_kit', '~> 3')
   s.add_dependency('net-telnet', '~> 0')
+  # Until https://github.com/digitalocean/droplet_kit/pull/333 is released
+  s.add_dependency('ostruct', '~> 0')
 end

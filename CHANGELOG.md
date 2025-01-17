@@ -2,6 +2,10 @@
 
 ## unreleased (master)
 
+### Fixes
+
+* Fix missing `ostruct` dependency for `ruby-head` (future `ruby-3.5`)
+
 ### New Features
 
 * Add `ruby-3.4` to CI
