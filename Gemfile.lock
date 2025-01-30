@@ -44,7 +44,7 @@ GEM
     iniparse (1.5.0)
     json (2.9.1)
     kartograph (0.2.8)
-    language_server-protocol (3.17.0.3)
+    language_server-protocol (3.17.0.4)
     logger (1.6.5)
     net-http (0.6.0)
       uri
