@@ -5,6 +5,7 @@
 ### Fixes
 
 * Fix missing `ostruct` dependency for `ruby-head` (future `ruby-3.5`)
+* Run `rubocop` in CI through `bundle exec`
 
 ### New Features
 
